@@ -1,0 +1,20 @@
+{
+  "name": "covid__api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node-sass -o css scss/main.scss -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gujejiani/Covid__API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gujejiani/Covid__API/issues"
+  },
+  "homepage": "https://github.com/Gujejiani/Covid__API#readme"
+}

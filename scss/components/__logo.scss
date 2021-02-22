@@ -1,0 +1,20 @@
+.header__nav__logo {
+  position: relative;
+  &__part__1 {
+    position: absolute;
+    left: 25px;
+    width: 60px;
+    animation-name: logo;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes logo {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
