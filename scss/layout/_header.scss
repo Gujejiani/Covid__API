@@ -8,9 +8,11 @@
     display: flex;
     justify-content: space-between;
     padding: 0 50px;
-
     color: $light--color;
     align-items: center;
+    @media (max-width: 500px) {
+      padding: 0 5px;
+    }
     .total__info {
       display: flex;
       font-size: 20px;
@@ -20,6 +22,9 @@
       margin: auto;
       @media (max-width: 768px) {
         font-size: 16px;
+      }
+      @media (max-width: 500px) {
+        font-size: 13px;
       }
 
       div {

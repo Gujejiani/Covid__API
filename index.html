@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
+    <div class="fav__overlay"></div>
     <header class="header">
       <div class="header__items__container">
         <nav class="header__nav">
@@ -66,12 +67,33 @@
         </div>
       </div>
     </header>
+
     <div class="container">
-      <table class="container__table" style="width: 100%">
+      <table class="container__table">
         <tr class="container__table__titles">
-          <th>Country</th>
-          <th>Total Cases</th>
-          <th>New Cases</th>
+          <th class="table__title">Country</th>
+          <th class="table__title">Total Cases</th>
+          <th class="table__title">New Cases</th>
+          <th class="table__title fav">
+            Fav <i class="fas fa-caret-down"></i>
+
+            <!-- FAVOURITE DROPDOWN -->
+
+            <div class="fav__container fav__dropdown--hide">
+              <table class="fav__table">
+                <tr class="fav__table__titles">
+                  <th class="table__title fav__table__title">Country</th>
+                  <th class="table__title fav__table__title">
+                    Total Cases
+
+                    <div class="fav__table__message">Favourites is Empty</div>
+                  </th>
+                  <th class="table__title fav__table__title">New Cases</th>
+                </tr>
+              </table>
+            </div>
+            <!-- FAVOURITE DROPDOWN END -->
+          </th>
         </tr>
         <tr class="container__table__items">
           <td class="container__table__countries">Georgia</td>

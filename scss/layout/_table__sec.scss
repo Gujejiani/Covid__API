@@ -1,7 +1,12 @@
 .container {
   margin: 200px 0;
   padding: 0 50px;
+
+  @media (max-width: 500px) {
+    padding: 0 5px;
+  }
   &__table {
+    position: relative;
     width: 100%;
     max-width: 1000px;
     text-align: left;
@@ -11,9 +16,24 @@
     padding: 20px 10px;
     &__titles {
       font-size: 22px;
+
+      @media (max-width: "768px") {
+        font-size: 16px;
+      }
+      .table__title {
+        position: sticky;
+        padding: 10px 0;
+
+        top: 105px;
+        background-color: #fff;
+        z-index: 10;
+      }
     }
     &__items {
       font-size: 18px;
+      @media (max-width: "768px") {
+        font-size: 15px;
+      }
     }
     &__countries {
       cursor: pointer;
@@ -24,9 +44,10 @@
       font-weight: bold;
       display: flex;
       justify-content: space-between;
+      padding: 10px 0;
       &__star {
         color: gray;
-        opacity: 0.3;
+
         cursor: pointer;
       }
     }
@@ -34,6 +55,7 @@
       display: flex;
       justify-content: space-between;
       color: black;
+      padding: 10px 0;
     }
   }
 }

@@ -1,7 +1,9 @@
 import { covidStatistic, covidTotal } from "./config.js";
 import { CovidDataGetJSON } from "./helper.js/helper.js";
 
-export const state = {};
+export const state = {
+  favourites: [],
+};
 
 export const getCovidData = async function () {
   try {

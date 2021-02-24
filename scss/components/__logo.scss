@@ -11,9 +11,15 @@
     animation-name: logo;
     animation-duration: 15s;
     animation-iteration-count: infinite;
+    @media (max-width: "768px") {
+      width: 30px;
+      left: 18px;
+    }
   }
   &__part__2 {
-    left: 0;
+    @media (max-width: "768px") {
+      width: 100px;
+    }
   }
 }
 
