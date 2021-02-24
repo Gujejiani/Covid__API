@@ -7,6 +7,16 @@ class TableView extends View {
     super();
     this.renderSpinner();
   }
+  removeFavElements() {
+    this.favCountryItems = document.querySelectorAll(
+      ".container__table__items"
+    ); // tr elements;
+    this.favCountryItems.forEach((el) => {
+      if (el) {
+        el.remove();
+      }
+    });
+  }
   favouritesIconClicked(el) {
     el.classList.toggle("favourite");
   }

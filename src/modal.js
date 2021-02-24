@@ -12,8 +12,9 @@ export const getCovidData = async function () {
       CovidDataGetJSON(covidStatistic.url, covidStatistic.host),
       CovidDataGetJSON(covidTotal.url, covidTotal.host),
     ]).then((resultArr) => {
-      state.covidInfo = resultArr[0]?.response ?? [];
+      state.covidStatistic = resultArr[0].result;
       state.covidTotal = resultArr[1] ?? [];
+      console.log(state);
     });
   } catch (err) {
     console.log(err);

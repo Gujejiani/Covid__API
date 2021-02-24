@@ -23,10 +23,15 @@
       .table__title {
         position: sticky;
         padding: 10px 0;
-
         top: 105px;
         background-color: #fff;
         z-index: 10;
+        @media (max-width: 768px) {
+          top: 75px;
+        }
+        @media (max-width: 500px) {
+          top: 65;
+        }
       }
     }
     &__items {
@@ -38,6 +43,9 @@
     &__countries {
       cursor: pointer;
       padding: 10px 0;
+      @media (max-width: 768px) {
+        width: 100px;
+      }
     }
     &__new {
       color: red;

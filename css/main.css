@@ -218,7 +218,7 @@ html {
   .fav__dropdown--hide {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease-in; }
+    transition: opacity 0.5s ease-in; }
   .fav__table {
     padding: 10px;
     position: absolute;
@@ -229,7 +229,8 @@ html {
     border-radius: 5px;
     padding-bottom: 100px;
     padding-left: 20px;
-    color: #f2efe9; }
+    color: #f2efe9;
+    text-align: center; }
     .fav__table__titles {
       position: relative;
       z-index: 20; }
@@ -239,6 +240,9 @@ html {
     .fav__table .container__table__items {
       font-size: 15px;
       font-weight: normal; }
+      .fav__table .container__table__items__fav__countries {
+        width: 80px;
+        text-align: left; }
     .fav__table__message {
       position: absolute;
       top: 50px;
@@ -251,6 +255,9 @@ html {
       width: 120px; }
     .fav__table__new {
       color: red; }
+      .fav__table__new--null {
+        color: #fff !important;
+        margin-left: 20px; }
       .fav__table__new--favourite {
         position: relative;
         left: 30px; }
@@ -292,6 +299,12 @@ html {
         top: 105px;
         background-color: #fff;
         z-index: 10; }
+        @media (max-width: 768px) {
+          .container__table__titles .table__title {
+            top: 75px; } }
+        @media (max-width: 500px) {
+          .container__table__titles .table__title {
+            top: 65; } }
     .container__table__items {
       font-size: 18px; }
       @media (max-width: 768px) {
@@ -300,6 +313,9 @@ html {
     .container__table__countries {
       cursor: pointer;
       padding: 10px 0; }
+      @media (max-width: 768px) {
+        .container__table__countries {
+          width: 100px; } }
     .container__table__new {
       color: red;
       font-weight: bold;

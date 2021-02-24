@@ -9,24 +9,27 @@ export default class View {
     this._tableContainerClear.innerHTML = "";
   }
 
-  generateMarkup(data) {
+  generateMarkup(data, fav = false) {
     if (data.country === "All") return "";
     const markup = `
-    <tr class="container__table__items">
-    <td data-country=${data.country} class="container__table__countries">${
-      data.country
-    }</td>
-    <td class="container__table__total">${data?.cases.total}</td>
+    <tr class="container__table__items ${fav ? "container__fav__items" : ""}">
+    <td data-country=${data.country} class="container__table__countries ${
+      fav ? "container__table__items__fav__countries" : ""
+    }">${data.country}</td>
+    <td class="container__table__total">${data?.totalCases}</td>
     <td class="${
-      data?.cases.new > 0
+      parseInt(data?.newCases) > 0
         ? "container__table__new"
         : "container__table__new--null"
-    }">
-       ${data?.cases.new ? data?.cases.new : 0}
+    } ${fav ? "fav__table__new--null" : null}">
+       ${data?.newCases ? data?.newCases : 0}
       <span
       
-        class="container__table__new__star container__table__new--favourite"
-        ><i  data-id=${data.country} class="fas fa-star fa-lg"></i>
+        class="container__table__new__star container__table__new--favourite  " 
+        
+        ><i  data-id="${data.country}" class="fas fa-star fa-lg ${
+      data.fav ? "favourite" : ""
+    }"></i>
       </span>
     </td>
     </tr>`;
