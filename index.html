@@ -5,6 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="./img/Group 15.svg" type="image/svg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
     <title>Covid Api</title>
     <link rel="stylesheet" href="./css/main.css" />
   </head>
@@ -20,30 +32,61 @@
                 class="header__nav__logo__part__1 header__nav__logo__part__1--rotate" />
               <img
                 class="header__nav__logo__part__2"
-                src="./img/logo.svg"
+                src="./img/logoo.svg"
                 alt="logo"
             /></a>
           </div>
         </nav>
         <div class="total__info">
           <div class="total__info__cases">
-            CONFIRMED: <span class="total__info__cases--confirmed">23123</span>
+            CONFIRMED
+            <span class="total__info__cases--confirmed"
+              ><div class="header__loader"></div
+            ></span>
           </div>
           <div class="total__info__cases">
-            CRITICAL: <span class="total__info__cases--critical">2323</span>
+            CRITICAL
+            <span class="total__info__cases--critical"
+              ><div class="header__loader"></div
+            ></span>
           </div>
           <div class="total__info__cases">
-            DEATHS: <span class="total__info__cases--deaths">2323</span>
+            DEATHS
+            <span class="total__info__cases--deaths"
+              ><div class="header__loader"></div
+            ></span>
           </div>
           <div class="total__info__cases">
-            RECOVERED:
-            <span class="total__info__cases--recovered"> 232332</span>
+            RECOVERED
+            <span class="total__info__cases--recovered">
+              .
+              <div class="header__loader"></div
+            ></span>
           </div>
         </div>
       </div>
     </header>
+    <div class="container">
+      <table class="container__table" style="width: 100%">
+        <tr class="container__table__titles">
+          <th>Country</th>
+          <th>Total Cases</th>
+          <th>New Cases</th>
+        </tr>
+        <tr class="container__table__items">
+          <td class="container__table__countries">Georgia</td>
+          <td class="container__table__total">3000</td>
+          <td class="container__table__new">
+            + 50
+            <span
+              class="container__table__new__star container__table__new--favourite"
+              ><i class="fas fa-star fa-lg"></i>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
 
     <script type="module" src="./src/controller.js"></script>
   </body>
-  head
 </html>

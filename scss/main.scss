@@ -2,5 +2,8 @@
 @import "./abstracts/mixins";
 @import "./abstracts/variables";
 @import "./components/btn";
-@import "./layout/header.scss"; // @import "./layout.scss;
 @import "./components/_logo";
+@import "./components/spinner";
+@import "./components/header__spinner";
+@import "./layout/header.scss";
+@import "./layout/table__sec.scss";

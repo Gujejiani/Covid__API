@@ -1,12 +1,14 @@
 .header {
   position: fixed;
-  padding: 10px;
+  top: 0;
   background-color: $primary--color;
   width: 100%;
+  z-index: 100;
   .header__items__container {
     display: flex;
     justify-content: space-between;
-    padding-right: 50px;
+    padding: 0 50px;
+
     color: $light--color;
     align-items: center;
     .total__info {
@@ -16,7 +18,17 @@
       max-width: 1000px;
       justify-content: space-between;
       margin: auto;
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+
+      div {
+        text-align: center;
+      }
+
       &__cases {
+        position: relative;
+
         &--deaths {
           color: $darkRed--color;
         }
@@ -29,12 +41,10 @@
         &--confirmed {
           color: $secondary--color;
         }
+        span {
+          display: block;
+        }
       }
     }
-  }
-  &__nav {
-    padding: 0 50px;
-    display: flex;
-    align-items: center;
   }
 }

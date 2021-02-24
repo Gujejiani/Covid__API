@@ -1,0 +1,70 @@
+.loader {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 50vh;
+  align-items: center;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  align-items: center;
+}
+
+.loader__img__parent {
+  width: 100%;
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.dots__parent {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.dot {
+  width: 15px;
+  margin-left: 10px;
+  background-color: $primary--color;
+  border-radius: 50%;
+  height: 15px;
+  animation-name: loader;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.dot--2 {
+  background-color: $secondary--color;
+  animation-delay: 0.4s;
+}
+.dot--3 {
+  background-color: $darkRed--color;
+  animation-delay: 0.8s;
+}
+.loader__logo {
+  animation-name: Logo;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes loader {
+  50% {
+    opacity: 0;
+    transform: scale(0.7) translateY(10px);
+  }
+}
+@keyframes Logo {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

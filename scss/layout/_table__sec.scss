@@ -1,0 +1,39 @@
+.container {
+  margin: 200px 0;
+  padding: 0 50px;
+  &__table {
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px 10px;
+    &__titles {
+      font-size: 22px;
+    }
+    &__items {
+      font-size: 18px;
+    }
+    &__countries {
+      cursor: pointer;
+      padding: 10px 0;
+    }
+    &__new {
+      color: red;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      &__star {
+        color: gray;
+        opacity: 0.3;
+        cursor: pointer;
+      }
+    }
+    &__new--null {
+      display: flex;
+      justify-content: space-between;
+      color: black;
+    }
+  }
+}

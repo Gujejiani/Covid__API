@@ -1,12 +1,19 @@
 .header__nav__logo {
   position: relative;
+
+  padding: 15px 0;
+  display: flex;
   &__part__1 {
     position: absolute;
-    left: 25px;
+    left: 28px;
+    top: 14px;
     width: 60px;
     animation-name: logo;
-    animation-duration: 20s;
+    animation-duration: 15s;
     animation-iteration-count: infinite;
+  }
+  &__part__2 {
+    left: 0;
   }
 }
 
