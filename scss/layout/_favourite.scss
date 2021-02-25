@@ -8,7 +8,7 @@
   &__dropdown--hide {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.5s ease-in;
+    @include transition;
   }
   // &__overlay {
   //   position: absolute;
@@ -49,6 +49,9 @@
       &__fav__countries {
         width: 80px;
         text-align: left;
+        &:hover {
+          background-color: $secondary--color;
+        }
       }
     }
     &__message {

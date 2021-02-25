@@ -6,14 +6,14 @@ export default class View {
   }
 
   clearTableContainer() {
-    this._tableContainerClear.innerHTML = "";
+    this._tableContainerClear ? (this._tableContainerClear.innerHTML = "") : "";
   }
 
   generateMarkup(data, fav = false) {
     if (data.country === "All") return "";
     const markup = `
     <tr class="container__table__items ${fav ? "container__fav__items" : ""}">
-    <td data-country=${data.country} class="container__table__countries ${
+    <td data-country="${data.country}" class="container__table__countries ${
       fav ? "container__table__items__fav__countries" : ""
     }">${data.country}</td>
     <td class="container__table__total">${data?.totalCases}</td>
@@ -56,5 +56,19 @@ export default class View {
       </div>`;
 
     this._tableContainerClear.insertAdjacentHTML("beforeend", markup);
+  }
+  removeFavElements(tableView) {
+    !tableView
+      ? (this.favCountryItems = document.querySelectorAll(
+          ".container__fav__items"
+        ))
+      : (this.favCountryItems = document.querySelectorAll(
+          ".container__table__items"
+        )); // tr elements;; // tr elements;
+    this.favCountryItems.forEach((el) => {
+      if (el) {
+        el.remove();
+      }
+    });
   }
 }

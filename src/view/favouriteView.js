@@ -21,15 +21,6 @@ class Favourite extends View {
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
-  removeFavElements() {
-    this.favCountryItems = document.querySelectorAll(".container__fav__items"); // tr elements;
-    this.favCountryItems.forEach((el) => {
-      if (el) {
-        el.remove();
-      }
-    });
-  }
-
   toggleDropdown() {
     this._dropdownContainer.classList.toggle("fav__dropdown--show");
   }

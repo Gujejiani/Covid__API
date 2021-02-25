@@ -4,6 +4,7 @@ import TableView from "./view/tableView.js";
 import FavouritesView from "./view/favouriteView.js";
 import tableView from "./view/tableView.js";
 import favouriteView from "./view/favouriteView.js";
+import countryModalView from "./view/modalView.js";
 const loadCovidData = async function () {
   await getCovidData();
 
@@ -19,7 +20,7 @@ const loadCovidData = async function () {
 
 loadCovidData();
 
-const controlFavourites = function (e) {
+const controApplication = function (e) {
   const el = e.target;
 
   //1) show favourites section on  dropdown click
@@ -39,7 +40,7 @@ const controlFavourites = function (e) {
 
     //when users delets country from favourites
     if (el.closest("th") && el.closest("th").classList.contains("fav")) {
-      tableView.removeFavElements();
+      tableView.removeFavElements(true);
       renderTable();
     }
 
@@ -56,15 +57,46 @@ const controlFavourites = function (e) {
       favouriteView.addDefaultMessage();
     }
   }
+  console.log(el.classList.contains("container__table__countries"));
+  console.log(el);
+};
+const showModal = async function (e) {
+  const el = e.target;
+  if (el.classList.contains("container__table__countries")) {
+    const country = el.dataset.country; // clicked country Name
+    const countryCovidInfo = getCountryCovidInfo(country); // getting country covid info
+    state.countryDetail = countryCovidInfo; // storing it in seperate object
+    const countryInfo = await getCountryInfo(country); // awaiting to deatil info  we need flag and population
+    let { flag, population } = countryInfo[0];
+    population = `${(population / 1000000).toFixed(1)} M`;
+    state.countryDetail.flag = flag;
+    state.countryDetail.population = population;
+    //flag and population added two our more detail object
+
+    // 2) show county modal
+    countryModalView.render(state.countryDetail);
+    countryModalView.toggleModal();
+  }
 };
 
-const controlMainTable = function (e) {};
-
+const modalOverlayHandler = function () {
+  console.log("modalCliccked");
+  countryModalView.hideModal();
+};
 const init = function () {
-  // FavouritesView.addHandlerToDropdown(controlFavourites);
-  tableView.addHandlertomainContainerTable(controlFavourites);
+  // FavouritesView.addHandlerToDropdown(controApplication);
+  tableView.addHandlertomainContainerTable(controApplication);
+  countryModalView.addModalToggleHandler(showModal);
+  countryModalView.addModalOverlayHandler(modalOverlayHandler);
 };
 init();
+
+const getCountryCovidInfo = function (country) {
+  const countryData = state.covidStatistic.find((el) => el.country === country);
+
+  console.log(countryData);
+  return countryData;
+};
 
 const sortCovidDataByCountries = function (data) {
   const sorted = data.sort((a, b) => {
@@ -100,4 +132,15 @@ const addAndRemoveFromFavouritesArray = function (country) {
     state.favourites.splice(findIndex, 1);
   }
   console.log(state.covidStatistic);
+};
+
+const getCountryInfo = function (country) {
+  const countryInfo = fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data;
+    });
+  return countryInfo;
 };

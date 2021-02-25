@@ -3,6 +3,7 @@ import { CovidDataGetJSON } from "./helper.js/helper.js";
 
 export const state = {
   favourites: [],
+  countryDetail: {},
 };
 
 export const getCovidData = async function () {
@@ -12,6 +13,7 @@ export const getCovidData = async function () {
       CovidDataGetJSON(covidStatistic.url, covidStatistic.host),
       CovidDataGetJSON(covidTotal.url, covidTotal.host),
     ]).then((resultArr) => {
+      console.log(state);
       state.covidStatistic = resultArr[0].result;
       state.covidTotal = resultArr[1] ?? [];
       console.log(state);

@@ -4,6 +4,10 @@
   text-indent: -9999em;
   width: 3em;
   height: 3em;
+  @media (max-width: 768px) {
+    width: 2em;
+    height: 2em;
+  }
   border-radius: 50%;
   background: #067275;
   background: -moz-linear-gradient(
