@@ -304,6 +304,9 @@ a {
   margin: 200px 0;
   padding: 0 50px;
   position: relative; }
+  @media (max-width: 768px) {
+    .container {
+      margin: 100px 0; } }
   @media (max-width: 500px) {
     .container {
       padding: 0 5px; } }
@@ -366,6 +369,7 @@ a {
 
 .modal {
   position: fixed;
+  min-width: 250px;
   max-width: 300px;
   left: 0;
   top: 200px;
@@ -379,6 +383,9 @@ a {
   opacity: 0;
   padding-bottom: 30px;
   transition: opacity 0.5s ease-in; }
+  @media (max-width: 768px) {
+    .modal {
+      top: 100px; } }
   .modal__overlay {
     position: fixed;
     top: 0;
@@ -404,6 +411,9 @@ a {
       .modal__container__list__li {
         font-size: 18px;
         margin: 5px 0; }
+        @media (max-width: 768px) {
+          .modal__container__list__li {
+            font-size: 16px; } }
         .modal__container__list__li--new {
           color: red; }
         .modal__container__list__li--country {

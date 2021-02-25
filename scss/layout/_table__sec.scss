@@ -2,6 +2,9 @@
   margin: 200px 0;
   padding: 0 50px;
   position: relative;
+  @media (max-width: 768px) {
+    margin: 100px 0;
+  }
 
   @media (max-width: 500px) {
     padding: 0 5px;

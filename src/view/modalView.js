@@ -21,7 +21,7 @@ class modalView extends View {
   }
 
   _toggleModal() {
-    this._overlay.classList.toggle("overlay__show");
+    // this._overlay.classList.toggle("overlay__show");
     this._parentElement.classList.toggle("show");
   }
 
