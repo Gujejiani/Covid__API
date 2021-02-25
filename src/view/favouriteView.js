@@ -2,12 +2,11 @@ import View from "./View.js";
 
 class Favourite extends View {
   _parentElement = document.querySelector(".fav__table");
-
-  _dropDown = document.querySelector(".fa-caret-down");
-  _dropdownContainer = document.querySelector(".fav__dropdown--hide");
+  _dropDown = document.querySelector(".fav");
 
   _favCountryItems = document.querySelectorAll(".container__fav__items");
   _overlay = document.querySelector(".fav__overlay");
+  _toggleElement = document.querySelector(".fav__dropdown--hide");
   _favMessageContainer = document.querySelector(
     ".fav__table__message__parrent"
   );
@@ -19,18 +18,6 @@ class Favourite extends View {
 
     const markup = this.generateMarkup(data, true);
     this._parentElement.insertAdjacentHTML("beforeend", markup);
-  }
-
-  toggleDropdown() {
-    this._toggleModal();
-  }
-
-  addHandlerToDropdown(handler) {
-    this._dropDown.addEventListener("click", handler);
-  }
-  _toggleModal() {
-    this._overlay.classList.toggle("fav__overlay__show");
-    this._dropdownContainer.classList.toggle("fav__dropdown--show");
   }
 
   addHandlerToFavOverlay(handler) {

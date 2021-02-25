@@ -5,27 +5,17 @@ class modalView extends View {
   //   _modal = document.querySelector(".modal");
   _overlay = document.querySelector(".modal__overlay");
   _container = document.querySelector(".container");
-
+  _toggleElement = document.querySelector(".modal");
   constructor() {
     super();
   }
 
-  toggleModal() {
-    //should be showModal
-    this._toggleModal();
-  }
-
   hideModal() {
     this._toggleModal();
-    this._clearModalCounrty();
+    this.clearModalCounrty();
   }
 
-  _toggleModal() {
-    this._overlay.classList.toggle("overlay__show");
-    this._parentElement.classList.toggle("show");
-  }
-
-  _clearModalCounrty() {
+  clearModalCounrty() {
     const countyModal = document.querySelector(".modal__container");
     countyModal ? countyModal.remove() : "";
   }

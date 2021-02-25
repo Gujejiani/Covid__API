@@ -8,6 +8,14 @@ export default class View {
   clearTableContainer() {
     this._tableContainerClear ? (this._tableContainerClear.innerHTML = "") : "";
   }
+  toggleModal() {
+    this._toggleModal();
+  }
+
+  _toggleModal() {
+    this._overlay.classList.toggle("overlay__show");
+    this._toggleElement.classList.toggle("show");
+  }
 
   generateMarkup(data, fav = false) {
     if (data.country === "All") return "";

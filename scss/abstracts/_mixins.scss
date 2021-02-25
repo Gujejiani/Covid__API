@@ -4,6 +4,6 @@
   align-items: center;
 }
 
-@mixin transition {
-  transition: opacity 0.5s ease-in;
+@mixin transition($delay: 0.5s) {
+  transition: opacity $delay ease-in;
 }

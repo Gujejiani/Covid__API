@@ -1,6 +1,7 @@
 .fav {
   position: relative;
   z-index: 10;
+  cursor: pointer;
   &__container {
     position: relative;
     z-index: 40;
@@ -20,13 +21,15 @@
     z-index: 10;
     opacity: 0;
     visibility: hidden;
+    @include transition;
   }
 
   &__table {
     padding: 10px;
     position: absolute;
-    width: 300px;
-    right: -12px;
+    width: 350px;
+    right: 0;
+    top: 10px;
     font-size: 16px;
     background-color: $primary--color;
     border-radius: 5px;
@@ -91,9 +94,4 @@
 .fav__dropdown--show {
   visibility: visible;
   opacity: 1;
-}
-
-.fav__overlay__show {
-  visibility: visible;
-  opacity: 0.2;
 }
