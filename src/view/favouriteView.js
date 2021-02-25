@@ -7,7 +7,7 @@ class Favourite extends View {
   _dropdownContainer = document.querySelector(".fav__dropdown--hide");
 
   _favCountryItems = document.querySelectorAll(".container__fav__items");
-
+  _overlay = document.querySelector(".fav__overlay");
   _favMessageContainer = document.querySelector(
     ".fav__table__message__parrent"
   );
@@ -22,12 +22,21 @@ class Favourite extends View {
   }
 
   toggleDropdown() {
-    this._dropdownContainer.classList.toggle("fav__dropdown--show");
+    this._toggleModal();
   }
 
   addHandlerToDropdown(handler) {
     this._dropDown.addEventListener("click", handler);
   }
+  _toggleModal() {
+    this._overlay.classList.toggle("fav__overlay__show");
+    this._dropdownContainer.classList.toggle("fav__dropdown--show");
+  }
+
+  addHandlerToFavOverlay(handler) {
+    this._overlay.addEventListener("click", handler);
+  }
+
   addDefaultMessage() {
     const markup = `<div class="fav__table__message">Favourites is Empty</div>`;
     this._favMessageContainer.insertAdjacentHTML("beforeend", markup);

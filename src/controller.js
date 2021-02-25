@@ -83,9 +83,14 @@ const modalOverlayHandler = function () {
   console.log("modalCliccked");
   countryModalView.hideModal();
 };
+
+const favOverlayHandler = function () {
+  favouriteView.toggleDropdown();
+};
 const init = function () {
   // FavouritesView.addHandlerToDropdown(controApplication);
   tableView.addHandlertomainContainerTable(controApplication);
+  favouriteView.addHandlerToFavOverlay(favOverlayHandler);
   countryModalView.addModalToggleHandler(showModal);
   countryModalView.addModalOverlayHandler(modalOverlayHandler);
 };

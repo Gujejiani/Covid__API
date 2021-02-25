@@ -3,7 +3,7 @@ import View from "./View.js";
 class modalView extends View {
   _parentElement = document.querySelector(".modal");
   //   _modal = document.querySelector(".modal");
-  _modalOverlay = document.querySelector(".modal__overlay");
+  _overlay = document.querySelector(".modal__overlay");
   _container = document.querySelector(".container");
 
   constructor() {
@@ -21,7 +21,7 @@ class modalView extends View {
   }
 
   _toggleModal() {
-    this._modalOverlay.classList.toggle("overlay__show");
+    this._overlay.classList.toggle("overlay__show");
     this._parentElement.classList.toggle("show");
   }
 
@@ -31,7 +31,7 @@ class modalView extends View {
   }
 
   addModalOverlayHandler(handler) {
-    this._modalOverlay.addEventListener("click", handler);
+    this._overlay.addEventListener("click", handler);
   }
   addModalToggleHandler(handler) {
     this._container.addEventListener("click", handler);
