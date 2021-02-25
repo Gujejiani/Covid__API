@@ -6,6 +6,7 @@ export default class View {
   }
 
   clearTableContainer() {
+    console.log("clear");
     this._tableContainerClear ? (this._tableContainerClear.innerHTML = "") : "";
   }
   toggleModal() {

@@ -5,6 +5,7 @@ import HeaderView from "./view/headerView.js";
 import tableView from "./view/tableView.js";
 import favouriteView from "./view/favouriteView.js";
 import countryModalView from "./view/modalView.js";
+import searchView from "./view/searchView.js";
 const loadCovidData = async function () {
   const favourites = model.getfavouritesFromLocalStorage()
     ? model.getfavouritesFromLocalStorage()
@@ -41,6 +42,8 @@ const controApplication = function (e) {
   //1) show favourites section on  dropdown click
 
   if (el.closest("th") && el.closest("th").classList.contains("fav")) {
+    // if (e.target.nodeName === "TABLE" || e.target.nodeName === "I") return;
+    // console.log(e.target.nodeName);
     favouriteView.toggleModal();
   }
 
@@ -103,11 +106,30 @@ const modalOverlayHandler = function () {
 const favOverlayHandler = function () {
   favouriteView.toggleModal(); //hide favourites and overlay
 };
+
+const searchControler = function (e) {
+  const searching = "" + e.target.value;
+  const searched = model.state.covidStatistic.filter((el) =>
+    el.country.toUpperCase().includes(searching.toUpperCase())
+  );
+  tableView.removeFavElements(true); //
+  console.log(searched);
+  searched.map((country) => {
+    tableView.render(country);
+  });
+};
+
+const showSearch = function () {
+  searchView.toggleSearch();
+};
+
 const init = function () {
   tableView.addHandlertomainContainerTable(controApplication);
   favouriteView.addHandlerToFavOverlay(favOverlayHandler);
   countryModalView.addModalToggleHandler(showModal);
   countryModalView.addModalOverlayHandler(modalOverlayHandler);
+  searchView.addSearchHandler(searchControler);
+  searchView.addTogleSearchHandler(showSearch);
 };
 init();
 

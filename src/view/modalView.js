@@ -1,6 +1,6 @@
 import View from "./View.js";
 
-class modalView extends View {
+class ModalView extends View {
   _parentElement = document.querySelector(".modal");
   //   _modal = document.querySelector(".modal");
   _overlay = document.querySelector(".modal__overlay");
@@ -76,4 +76,4 @@ class modalView extends View {
   }
 }
 
-export default new modalView();
+export default new ModalView();
