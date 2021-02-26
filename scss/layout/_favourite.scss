@@ -11,7 +11,8 @@
     right: 0;
     width: 100%;
     max-width: 350px;
-    height: 400px;
+
+    max-height: 400px;
     overflow: auto;
   }
   &__dropdown--hide {
@@ -33,13 +34,12 @@
   }
 
   &__table {
-    padding: 10px;
+    padding: 10px 0;
     width: 100%;
     font-size: 16px;
     background-color: $primary--color;
     border-radius: 5px;
-    padding-bottom: 70px;
-    padding-left: 20px;
+    padding-bottom: 10px;
     color: $base--color;
     text-align: left;
 
@@ -48,7 +48,13 @@
       display: flex;
       width: 100%;
       justify-content: space-between;
-      padding-right: 40px;
+      padding-right: 80px;
+      padding-left: 20px;
+      font-size: 17px;
+      flex-wrap: wrap;
+      @media (max-width: 350px) {
+        font-size: 15px;
+      }
     }
 
     &__title {
@@ -56,11 +62,10 @@
       background-color: $primary--color !important;
     }
     .container__fav__items {
-      font-size: 15px;
-      font-weight: normal;
-      display: flex;
-      align-items: center;
-      padding: 0;
+      font-size: 16px;
+      @include country--li;
+      padding: 0 10px;
+      margin-top: 5px;
       cursor: pointer;
       &:hover {
         background-color: #4b3e3e;
@@ -71,15 +76,10 @@
       }
     }
     &__message {
-      position: absolute;
-      top: 40px;
-      left: 50px;
-      transform: translateX(-50%);
       font-size: 15px;
       color: $darkRed--color;
-
-      display: flex;
-      width: 150px;
+      padding: 10px;
+      margin: auto;
     }
     &__new {
       color: red;

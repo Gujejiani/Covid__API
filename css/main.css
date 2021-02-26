@@ -281,7 +281,7 @@ a {
     right: 0;
     width: 100%;
     max-width: 350px;
-    height: 400px;
+    max-height: 400px;
     overflow: auto; }
   .fav__dropdown--hide {
     visibility: hidden;
@@ -299,13 +299,12 @@ a {
     visibility: hidden;
     transition: opacity 0.5s ease-in-out; }
   .fav__table {
-    padding: 10px;
+    padding: 10px 0;
     width: 100%;
     font-size: 16px;
     background-color: #2a272b;
     border-radius: 5px;
-    padding-bottom: 70px;
-    padding-left: 20px;
+    padding-bottom: 10px;
     color: #f2efe9;
     text-align: left; }
     .fav__table__titles {
@@ -313,16 +312,26 @@ a {
       display: flex;
       width: 100%;
       justify-content: space-between;
-      padding-right: 40px; }
+      padding-right: 80px;
+      padding-left: 20px;
+      font-size: 17px;
+      flex-wrap: wrap; }
+      @media (max-width: 350px) {
+        .fav__table__titles {
+          font-size: 15px; } }
     .fav__table__title {
       position: relative;
       background-color: #2a272b !important; }
     .fav__table .container__fav__items {
-      font-size: 15px;
-      font-weight: normal;
+      font-size: 16px;
       display: flex;
       align-items: center;
-      padding: 0;
+      margin: 10px 0;
+      border-radius: 5px;
+      justify-content: space-between;
+      padding: 0 30px;
+      padding: 0 10px;
+      margin-top: 5px;
       cursor: pointer; }
       .fav__table .container__fav__items:hover {
         background-color: #4b3e3e; }
@@ -330,14 +339,10 @@ a {
         width: 80px;
         text-align: left; }
     .fav__table__message {
-      position: absolute;
-      top: 40px;
-      left: 50px;
-      transform: translateX(-50%);
       font-size: 15px;
       color: #904e55;
-      display: flex;
-      width: 150px; }
+      padding: 10px;
+      margin: auto; }
     .fav__table__new {
       color: red; }
       .fav__table__new--null {

@@ -6,7 +6,7 @@ import tableView from "./view/tableView.js";
 import favouriteView from "./view/favouriteView.js";
 import countryModalView from "./view/modalView.js";
 import searchView from "./view/searchView.js";
-import modalView from "./view/modalView.js";
+
 const loadCovidData = async function () {
   try {
     //1) get favourites from local storage
@@ -71,7 +71,8 @@ const controApplication = function (e) {
     }
 
     favouriteView.removeFavElements(); //removing items from fav countries for update
-
+    //sort favourites by alphhabet
+    model.state.favourites = sortCovidDataByCountries(model.state.favourites);
     if (model.state.favourites.length > 0) {
       // 2) add countries to favourites  view if they exist
       favouriteView.clearFavEmptyMessage();
@@ -132,7 +133,7 @@ const searchControler = function (e) {
   const searched = model.state.covidStatistic.filter((el) =>
     el.country.toUpperCase().includes(searching.toUpperCase())
   );
-  console.log(model.state.covidStatistic);
+
   tableView.removeFavElements(true); //
 
   searched.map((country) => {

@@ -7,9 +7,7 @@ class Favourite extends View {
   _favCountryItems = document.querySelectorAll(".container__fav__items");
   _overlay = document.querySelector(".fav__overlay");
   _toggleElement = document.querySelector(".fav__dropdown--hide");
-  _favMessageContainer = document.querySelector(
-    ".fav__table__message__parrent"
-  );
+  _favMessageContainer = document.querySelector(".fav__table__titles");
   constructor() {
     super();
   }

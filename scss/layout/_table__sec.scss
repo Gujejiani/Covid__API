@@ -47,12 +47,7 @@
     }
     &__items {
       font-size: 18px;
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
-      border-radius: 5px;
-      justify-content: space-between;
-      padding: 0 30px;
+      @include country--li;
       @media (max-width: 500px) {
         padding: 0;
       }
