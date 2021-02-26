@@ -92,7 +92,7 @@ const showCountyModal = async function (e) {
     const el = e.target;
     if (
       el.closest("ul") &&
-      el.closest("ul").classList.contains("container__table__items") &&
+      el.closest("ul").classList.contains("country__info") &&
       e.target.nodeName !== "I"
     ) {
       // clicked country Name
@@ -132,6 +132,7 @@ const searchControler = function (e) {
   const searched = model.state.covidStatistic.filter((el) =>
     el.country.toUpperCase().includes(searching.toUpperCase())
   );
+  console.log(model.state.covidStatistic);
   tableView.removeFavElements(true); //
 
   searched.map((country) => {

@@ -55,11 +55,13 @@
       position: relative;
       background-color: $primary--color !important;
     }
-    .container__table__items {
+    .container__fav__items {
       font-size: 15px;
       font-weight: normal;
-
+      display: flex;
+      align-items: center;
       padding: 0;
+      cursor: pointer;
       &:hover {
         background-color: #4b3e3e;
       }

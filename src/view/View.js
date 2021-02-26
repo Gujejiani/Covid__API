@@ -20,9 +20,9 @@ export default class View {
 
   generateMarkup(data, fav = false) {
     if (data.country === "All") return "";
-    const markup = `<ul data-country="${
-      data.country
-    }" class="container__table__items ${fav ? "container__fav__items" : ""}">
+    const markup = `<ul  data-country="${data.country}" class=" country__info ${
+      fav ? "container__fav__items" : "container__table__items"
+    }">
     <li  class="container__table__countries" >${data?.country}</li>
     <li class="container__table__total">${data?.totalCases}</li>
     <li class="${

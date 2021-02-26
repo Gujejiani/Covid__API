@@ -317,13 +317,16 @@ a {
     .fav__table__title {
       position: relative;
       background-color: #2a272b !important; }
-    .fav__table .container__table__items {
+    .fav__table .container__fav__items {
       font-size: 15px;
       font-weight: normal;
-      padding: 0; }
-      .fav__table .container__table__items:hover {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      cursor: pointer; }
+      .fav__table .container__fav__items:hover {
         background-color: #4b3e3e; }
-      .fav__table .container__table__items__fav__countries {
+      .fav__table .container__fav__items__fav__countries {
         width: 80px;
         text-align: left; }
     .fav__table__message {
