@@ -80,7 +80,7 @@ export default class View {
     });
   }
 
-  renderErrorMessage(message) {
+  renderErrorMessage(message = "can not fetch data, please come back later") {
     const markup = `<div class="error">
     <h3 class="error__message">
       ${message} 😞😞

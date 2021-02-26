@@ -42,7 +42,7 @@ class ModalView extends View {
     <div class="modal__container">
     <img
     class="modal__container__img"  src="${flag}"
-    alt="country"
+    alt="country flag"
   />
   <ul class="modal__container__list">
     <li  class="modal__container__list__li modal__container__list__li--country" >${country} </li>

@@ -10,9 +10,7 @@ export const CovidDataGetJSON = async function (url, host) {
     const data = res.json();
 
     if (!res.ok) throw new Error(`${res.message}`);
-    data.then((res) => {
-      console.log(res);
-    });
+
     return data;
   } catch (err) {
     console.log(err);

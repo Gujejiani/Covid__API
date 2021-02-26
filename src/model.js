@@ -16,10 +16,9 @@ export const getCovidData = async function () {
       if (!resultArr) return new Error("error accured");
       state.covidStatistic = resultArr[0].result;
       state.covidTotal = resultArr[1] ?? [];
-      console.log(state);
     });
   } catch (err) {
-    return err;
+    console.log(err);
   }
 };
 
@@ -46,7 +45,6 @@ export const addAndRemoveFromFavouritesArray = function (country) {
   }
 };
 export const saveFavouritesToLocalStorage = function () {
-  console.log("favourite saved");
   localStorage.setItem("favourites", JSON.stringify(state.favourites));
 };
 

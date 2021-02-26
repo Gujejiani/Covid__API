@@ -6,7 +6,7 @@ class HeaderView {
 
   renderHeaderData(data) {
     if (!data) return;
-    console.log("returned");
+
     const { confirmed, critical, deaths, recovered } = data[0];
     this.#confirmed.innerHTML = confirmed;
     this.#critical.innerHTML = critical;

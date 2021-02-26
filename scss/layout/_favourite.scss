@@ -1,14 +1,13 @@
 .fav {
   position: relative;
-
   &--title {
     position: relative;
-
     cursor: pointer;
   }
   &__container {
     position: absolute;
     z-index: 40;
+    top: 0px;
     right: 0;
     width: 100%;
     max-width: 350px;
@@ -40,13 +39,14 @@
     padding-bottom: 70px;
     padding-left: 20px;
     color: $base--color;
-    text-align: center;
+    text-align: left;
 
     &__titles {
       position: relative;
       display: flex;
       width: 100%;
       justify-content: space-between;
+      padding-right: 40px;
     }
 
     &__title {
@@ -56,6 +56,8 @@
     .container__table__items {
       font-size: 15px;
       font-weight: normal;
+
+      padding: 0;
       &:hover {
         background-color: #4b3e3e;
       }
@@ -88,7 +90,11 @@
     }
   }
 }
-
+.dropdown {
+  position: sticky;
+  top: 150px;
+  z-index: 30;
+}
 .favourite {
   color: $secondary--color;
 }

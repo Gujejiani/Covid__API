@@ -6,6 +6,7 @@ import tableView from "./view/tableView.js";
 import favouriteView from "./view/favouriteView.js";
 import countryModalView from "./view/modalView.js";
 import searchView from "./view/searchView.js";
+import modalView from "./view/modalView.js";
 const loadCovidData = async function () {
   try {
     //1) get favourites from local storage
@@ -36,7 +37,7 @@ const loadCovidData = async function () {
       });
     }
   } catch (err) {
-    tableView.renderErrorMessage(err.message);
+    tableView.renderErrorMessage();
   }
 };
 loadCovidData();
@@ -98,6 +99,7 @@ const showCountyModal = async function (e) {
       const country = el.closest("ul").dataset.country;
       const countryCovidInfo = getCountryCovidInfo(country); // getting country covid info
       model.state.countryDetail = countryCovidInfo; // storing it in seperate object in our state
+
       const countryInfo = await getCountryInfo(country); // awaiting to deatil info  we need flag and population
       const flag = countryInfo[0]?.flag ?? "";
       let population = countryInfo[0]?.population ?? "0";
@@ -174,13 +176,17 @@ const renderTable = function () {
   });
 };
 
-const getCountryInfo = function (country) {
-  const countryInfo = fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      return data;
-    });
-  return countryInfo;
+const getCountryInfo = async function (country) {
+  try {
+    const countryInfo = await fetch(
+      `https://restcountries.eu/rest/v2/name/${country}`
+    )
+      .then((data) => {
+        return data.json();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return countryInfo;
+  } catch (err) {}
 };

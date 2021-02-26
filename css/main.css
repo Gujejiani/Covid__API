@@ -210,17 +210,19 @@ a {
 .error {
   position: absolute;
   width: 100%;
-  background-color: #f2efe9;
+  background-color: #1d1f1f;
   max-width: 300px;
   left: 50%;
   transform: translateX(-50%);
   padding: 40px 0;
   text-align: left;
   border-radius: 10px;
+  color: #fff;
   transition: opacity 10s ease-in-out;
   visibility: hidden;
   opacity: 0; }
   .error__message {
+    opacity: 0.9;
     padding: 0 30px;
     font-size: 16px; }
 
@@ -275,6 +277,7 @@ a {
   .fav__container {
     position: absolute;
     z-index: 40;
+    top: 0px;
     right: 0;
     width: 100%;
     max-width: 350px; }
@@ -302,18 +305,20 @@ a {
     padding-bottom: 70px;
     padding-left: 20px;
     color: #f2efe9;
-    text-align: center; }
+    text-align: left; }
     .fav__table__titles {
       position: relative;
       display: flex;
       width: 100%;
-      justify-content: space-between; }
+      justify-content: space-between;
+      padding-right: 40px; }
     .fav__table__title {
       position: relative;
       background-color: #2a272b !important; }
     .fav__table .container__table__items {
       font-size: 15px;
-      font-weight: normal; }
+      font-weight: normal;
+      padding: 0; }
       .fav__table .container__table__items:hover {
         background-color: #4b3e3e; }
       .fav__table .container__table__items__fav__countries {
@@ -336,6 +341,11 @@ a {
       .fav__table__new--favourite {
         position: relative;
         left: 30px; }
+
+.dropdown {
+  position: sticky;
+  top: 150px;
+  z-index: 30; }
 
 .favourite {
   color: #00a5cf; }
