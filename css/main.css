@@ -280,7 +280,9 @@ a {
     top: 0px;
     right: 0;
     width: 100%;
-    max-width: 350px; }
+    max-width: 350px;
+    height: 400px;
+    overflow: auto; }
   .fav__dropdown--hide {
     visibility: hidden;
     opacity: 0;
