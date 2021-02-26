@@ -13,13 +13,13 @@ export const getCovidData = async function () {
       CovidDataGetJSON(covidStatistic.url, covidStatistic.host),
       CovidDataGetJSON(covidTotal.url, covidTotal.host),
     ]).then((resultArr) => {
-      console.log(state);
+      if (!resultArr) return new Error("error accured");
       state.covidStatistic = resultArr[0].result;
       state.covidTotal = resultArr[1] ?? [];
       console.log(state);
     });
   } catch (err) {
-    console.log(err);
+    return err;
   }
 };
 

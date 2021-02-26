@@ -1,4 +1,5 @@
 export default class View {
+  _errorContainer = document.querySelector(".container__table");
   render(data) {
     this.clearTableContainer();
     const markup = this.generateMarkup(data);
@@ -6,7 +7,6 @@ export default class View {
   }
 
   clearTableContainer() {
-    console.log("clear");
     this._tableContainerClear ? (this._tableContainerClear.innerHTML = "") : "";
   }
   toggleModal() {
@@ -20,28 +20,27 @@ export default class View {
 
   generateMarkup(data, fav = false) {
     if (data.country === "All") return "";
-    const markup = `
-    <tr class="container__table__items ${fav ? "container__fav__items" : ""}">
-    <td data-country="${data.country}" class="container__table__countries ${
-      fav ? "container__table__items__fav__countries" : ""
-    }">${data.country}</td>
-    <td class="container__table__total">${data?.totalCases}</td>
-    <td class="${
+    const markup = `<ul data-country="${
+      data.country
+    }" class="container__table__items ${fav ? "container__fav__items" : ""}">
+    <li  class="container__table__countries" >${data?.country}</li>
+    <li class="container__table__total">${data?.totalCases}</li>
+    <li class="${
       parseInt(data?.newCases) > 0
         ? "container__table__new"
         : "container__table__new--null"
-    } ${fav ? "fav__table__new--null" : null}">
-       ${data?.newCases ? data?.newCases : 0}
-      <span
+    } ${fav ? "fav__table__new--null" : null}"> ${
+      data?.newCases ? data?.newCases : 0
+    }</li>
+    <li  ><span
+
+      class="container__table__new__star container__table__new--favourite  " 
       
-        class="container__table__new__star container__table__new--favourite  " 
-        
-        ><i  data-id="${data.country}" class="fas fa-star fa-lg ${
+      ><i  data-id="${data.country}" class="fas fa-star fa-lg ${
       data.fav ? "favourite" : ""
     }"></i>
-      </span>
-    </td>
-    </tr>`;
+    </span></li>
+</ul>`;
 
     return markup;
   }
@@ -79,5 +78,17 @@ export default class View {
         el.remove();
       }
     });
+  }
+
+  renderErrorMessage(message) {
+    const markup = `<div class="error">
+    <h3 class="error__message">
+      ${message} 😞😞
+    </h3>
+  </div>
+    `;
+    this._errorContainer.insertAdjacentHTML("beforeend", markup);
+    const error = document.querySelector(".error");
+    error.classList.add("show");
   }
 }

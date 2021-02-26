@@ -7,64 +7,72 @@ import favouriteView from "./view/favouriteView.js";
 import countryModalView from "./view/modalView.js";
 import searchView from "./view/searchView.js";
 const loadCovidData = async function () {
-  const favourites = model.getfavouritesFromLocalStorage()
-    ? model.getfavouritesFromLocalStorage()
-    : [];
-  await model.getCovidData();
+  try {
+    //1) get favourites from local storage
+    const favourites = model.getfavouritesFromLocalStorage()
+      ? model.getfavouritesFromLocalStorage()
+      : [];
 
-  console.log(favourites);
-  // 1) render header data fields
-  HeaderView.renderHeaderData(model.state.covidTotal);
+    //2)await to covid data
+    await model.getCovidData();
 
-  // 2) sorting countries by countries alphabet
-  sortCovidDataByCountries(model.state.covidStatistic);
+    // 3) render header data fields
+    HeaderView.renderHeaderData(model.state.covidTotal);
 
-  // 3) storing favourites data from local storage
-  model.storeDataFromLocalStorageToFavourites(favourites);
+    // 4) sorting countries by countries alphabet
+    sortCovidDataByCountries(model.state.covidStatistic);
 
-  //4) render countries in the table
-  renderTable();
+    // 5) storing favourites data from local storage to our state
+    model.storeDataFromLocalStorageToFavourites(favourites);
 
-  //update favourites UI if there are counties
-  if (model.state.favourites.length > 0) {
-    favouriteView.clearFavEmptyMessage();
-    model.state.favourites.map((country) => {
-      favouriteView.render(country);
-    });
+    //6) render countries in the table
+    renderTable();
+
+    //update favourites UI if there are counties
+    if (model.state.favourites.length > 0) {
+      favouriteView.clearFavEmptyMessage();
+      model.state.favourites.map((country) => {
+        favouriteView.render(country);
+      });
+    }
+  } catch (err) {
+    tableView.renderErrorMessage(err.message);
   }
 };
-
 loadCovidData();
 
 const controApplication = function (e) {
   const el = e.target;
 
-  //1) show favourites section on  dropdown click
-
-  if (el.closest("th") && el.closest("th").classList.contains("fav")) {
-    // if (e.target.nodeName === "TABLE" || e.target.nodeName === "I") return;
-    // console.log(e.target.nodeName);
+  //check if dropdown was clicked
+  if (el.closest("li") && el.closest("li").classList.contains("fav")) {
+    //1) show favourites section on  dropdown click
     favouriteView.toggleModal();
   }
 
-  //2) add to favourites and remove
+  //check if star icon is clicked
   if (el.classList.contains("fa-star")) {
-    // 1) handle favourites save and remove
+    // handle favourites save and remove
     const el = e.target;
     const country = el.dataset.id;
     model.addAndRemoveFromFavouritesArray(country);
     //change Star UI logicly
     tableView.favouritesIconClicked(el);
 
-    //when users delets country from favourites
-    if (el.closest("th") && el.closest("th").classList.contains("fav")) {
+    //check if user deleted country from favourites
+    if (
+      el.closest("ul") &&
+      el.closest("ul").classList.contains("container__fav__items")
+    ) {
+      //if so update table ui
       tableView.removeFavElements(true);
       renderTable();
     }
 
-    favouriteView.removeFavElements(); //removing items fav countries for update
-    // 2) add countries to favourites  view
+    favouriteView.removeFavElements(); //removing items from fav countries for update
+
     if (model.state.favourites.length > 0) {
+      // 2) add countries to favourites  view if they exist
       favouriteView.clearFavEmptyMessage();
       model.state.favourites.map((country) => {
         country.fav = true;
@@ -77,25 +85,35 @@ const controApplication = function (e) {
   }
 };
 
-const showModal = async function (e) {
-  const el = e.target;
-  if (el.classList.contains("container__table__countries")) {
-    const country = el.dataset.country; // clicked country Name
-    const countryCovidInfo = getCountryCovidInfo(country); // getting country covid info
-    model.state.countryDetail = countryCovidInfo; // storing it in seperate object
-    const countryInfo = await getCountryInfo(country); // awaiting to deatil info  we need flag and population
-    let { population } = countryInfo[0];
-    const flag = countryInfo[0]?.flag;
-
-    population = `${(population / 1000000).toFixed(1)} M`;
-    model.state.countryDetail.flag = flag;
-    model.state.countryDetail.population = population;
-    //flag and population added two our more detail object
-    // 2) show county modal
-    countryModalView.clearModalCounrty();
-    countryModalView.render(model.state.countryDetail);
-
-    countryModalView.toggleModal();
+//showing detail info of country with modal window
+const showCountyModal = async function (e) {
+  try {
+    const el = e.target;
+    if (
+      el.closest("ul") &&
+      el.closest("ul").classList.contains("container__table__items") &&
+      e.target.nodeName !== "I"
+    ) {
+      // clicked country Name
+      const country = el.closest("ul").dataset.country;
+      const countryCovidInfo = getCountryCovidInfo(country); // getting country covid info
+      model.state.countryDetail = countryCovidInfo; // storing it in seperate object in our state
+      const countryInfo = await getCountryInfo(country); // awaiting to deatil info  we need flag and population
+      const flag = countryInfo[0]?.flag ?? "";
+      let population = countryInfo[0]?.population ?? "0";
+      population = `${(population / 1000000).toFixed(1)} m`;
+      model.state.countryDetail.flag = flag;
+      model.state.countryDetail.population = population;
+      //flag and population added two our more detail object
+      // 1) clear county modal
+      countryModalView.clearModalCounrty();
+      // 2) show county modal
+      countryModalView.render(model.state.countryDetail);
+      // 3) showing modal
+      countryModalView.toggleModal();
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -113,7 +131,7 @@ const searchControler = function (e) {
     el.country.toUpperCase().includes(searching.toUpperCase())
   );
   tableView.removeFavElements(true); //
-  console.log(searched);
+
   searched.map((country) => {
     tableView.render(country);
   });
@@ -126,7 +144,7 @@ const showSearch = function () {
 const init = function () {
   tableView.addHandlertomainContainerTable(controApplication);
   favouriteView.addHandlerToFavOverlay(favOverlayHandler);
-  countryModalView.addModalToggleHandler(showModal);
+  countryModalView.addModalToggleHandler(showCountyModal);
   countryModalView.addModalOverlayHandler(modalOverlayHandler);
   searchView.addSearchHandler(searchControler);
   searchView.addTogleSearchHandler(showSearch);
@@ -142,6 +160,7 @@ const getCountryCovidInfo = function (country) {
 };
 
 const sortCovidDataByCountries = function (data) {
+  if (!data) return [];
   const sorted = data.sort((a, b) => {
     return a.country > b.country ? 1 : -1;
   });

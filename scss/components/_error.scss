@@ -1,0 +1,20 @@
+.error {
+  position: absolute;
+  width: 100%;
+
+  background-color: $base--color;
+  max-width: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 40px 0;
+  text-align: left;
+  border-radius: 10px;
+  @include transition(10s);
+  visibility: hidden;
+  opacity: 0;
+
+  &__message {
+    padding: 0 30px;
+    font-size: 16px;
+  }
+}

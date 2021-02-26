@@ -179,7 +179,7 @@ a {
 
 .search {
   position: absolute;
-  z-index: 9;
+  z-index: 1;
   right: 0;
   width: 100%;
   max-width: 1000px;
@@ -197,7 +197,7 @@ a {
     border-radius: 10px 10px 0 0;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.5s ease-in; }
+    transition: opacity 0.5s ease-in-out; }
     .search__input::placeholder {
       color: #fff; }
   .search__icon {
@@ -206,6 +206,23 @@ a {
     top: 45px;
     color: #00a5cf;
     cursor: pointer; }
+
+.error {
+  position: absolute;
+  width: 100%;
+  background-color: #f2efe9;
+  max-width: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 40px 0;
+  text-align: left;
+  border-radius: 10px;
+  transition: opacity 10s ease-in-out;
+  visibility: hidden;
+  opacity: 0; }
+  .error__message {
+    padding: 0 30px;
+    font-size: 16px; }
 
 .header {
   position: fixed;
@@ -251,17 +268,20 @@ a {
           display: block; }
 
 .fav {
-  position: relative;
-  z-index: 10; }
+  position: relative; }
   .fav--title {
+    position: relative;
     cursor: pointer; }
   .fav__container {
-    position: relative;
-    z-index: 40; }
+    position: absolute;
+    z-index: 40;
+    right: 0;
+    width: 100%;
+    max-width: 350px; }
   .fav__dropdown--hide {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.5s ease-in; }
+    transition: opacity 0.5s ease-in-out; }
   .fav__overlay {
     position: fixed;
     top: 0;
@@ -269,47 +289,45 @@ a {
     width: 100vw;
     height: 100%;
     background-color: black;
-    z-index: 8;
+    z-index: 2;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.5s ease-in; }
+    transition: opacity 0.5s ease-in-out; }
   .fav__table {
     padding: 10px;
-    position: absolute;
-    width: 350px;
-    right: 0;
-    top: 10px;
+    width: 100%;
     font-size: 16px;
     background-color: #2a272b;
     border-radius: 5px;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
     padding-left: 20px;
     color: #f2efe9;
     text-align: center; }
     .fav__table__titles {
       position: relative;
-      z-index: 20; }
+      display: flex;
+      width: 100%;
+      justify-content: space-between; }
     .fav__table__title {
       position: relative;
       background-color: #2a272b !important; }
     .fav__table .container__table__items {
       font-size: 15px;
       font-weight: normal; }
+      .fav__table .container__table__items:hover {
+        background-color: #4b3e3e; }
       .fav__table .container__table__items__fav__countries {
         width: 80px;
         text-align: left; }
-        .fav__table .container__table__items__fav__countries:hover {
-          background-color: #00a5cf; }
     .fav__table__message {
       position: absolute;
-      top: 50px;
+      top: 40px;
       left: 50px;
       transform: translateX(-50%);
       font-size: 15px;
       color: #904e55;
-      z-index: 15;
       display: flex;
-      width: 120px; }
+      width: 150px; }
     .fav__table__new {
       color: red; }
       .fav__table__new--null {
@@ -348,45 +366,61 @@ a {
     background-color: #fff;
     border-radius: 5px;
     padding: 20px 0; }
+    .container__table__total {
+      width: 100px; }
     .container__table__titles {
       position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
       font-size: 22px;
-      padding: 0 10px; }
+      padding: 0 30px;
+      position: sticky;
+      top: 105px;
+      text-align: center;
+      background-color: #fff; }
       @media (max-width: 768px) {
         .container__table__titles {
+          top: 75px;
           font-size: 16px; } }
+      @media (max-width: 500px) {
+        .container__table__titles {
+          top: 65; } }
       .container__table__titles .table__title {
-        position: sticky;
         padding: 10px 0;
-        top: 105px;
         background-color: #fff;
-        padding: 0 10px; }
-        @media (max-width: 768px) {
-          .container__table__titles .table__title {
-            top: 75px; } }
-        @media (max-width: 500px) {
-          .container__table__titles .table__title {
-            top: 65; } }
+        padding: 10px 10px; }
     .container__table__items {
-      font-size: 18px; }
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      border-radius: 5px;
+      justify-content: space-between;
+      padding: 0 30px; }
+      @media (max-width: 500px) {
+        .container__table__items {
+          padding: 0; } }
+      .container__table__items:hover {
+        background-color: #f2efe9;
+        cursor: pointer; }
       @media (max-width: 768px) {
         .container__table__items {
           font-size: 15px; } }
     .container__table__countries {
       cursor: pointer;
-      padding: 10px; }
+      padding: 10px;
+      width: 130px; }
       @media (max-width: 768px) {
         .container__table__countries {
           width: 100px; } }
-      .container__table__countries:hover {
-        border-radius: 5px;
-        background-color: #f2efe9; }
     .container__table__new {
       color: red;
       font-weight: bold;
       display: flex;
       justify-content: space-between;
-      padding: 10px 0; }
+      padding: 10px 0;
+      width: 100px; }
       .container__table__new__star {
         color: gray;
         cursor: pointer; }
@@ -394,7 +428,8 @@ a {
       display: flex;
       justify-content: space-between;
       color: black;
-      padding: 10px 0; }
+      padding: 10px 0;
+      width: 100px; }
 
 .modal {
   position: fixed;
@@ -411,7 +446,7 @@ a {
   visibility: hidden;
   opacity: 0;
   padding-bottom: 30px;
-  transition: opacity 0.5s ease-in; }
+  transition: opacity 0.5s ease-in-out; }
   @media (max-width: 768px) {
     .modal {
       top: 100px; } }
@@ -426,7 +461,7 @@ a {
     z-index: 100;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.5s ease-in; }
+    transition: opacity 0.5s ease-in-out; }
   .modal__container {
     width: 100%; }
     .modal__container__img {
@@ -439,6 +474,8 @@ a {
       .modal__container__list__li {
         font-size: 18px;
         margin: 5px 0; }
+        .modal__container__list__li--recovered {
+          color: #1c801c; }
         @media (max-width: 768px) {
           .modal__container__list__li {
             font-size: 16px; } }

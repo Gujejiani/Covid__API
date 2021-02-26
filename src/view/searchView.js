@@ -10,13 +10,14 @@ class SearchView extends View {
 
   toggleSearch() {
     this._searchInput.classList.toggle("show");
+    this._searchInput.focus();
   }
 
   addTogleSearchHandler(handler) {
     this._searchIcon.addEventListener("click", handler);
   }
 
-  addSearchHandler(handler) {
+  addSearchHandler(handler, blurHandler) {
     this._searchInput.addEventListener("input", handler);
   }
 }

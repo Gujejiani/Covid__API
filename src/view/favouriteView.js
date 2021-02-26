@@ -14,8 +14,6 @@ class Favourite extends View {
     super();
   }
   render(data) {
-    console.log(this._favCountryItems);
-
     const markup = this.generateMarkup(data, true);
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }

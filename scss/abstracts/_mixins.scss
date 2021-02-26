@@ -5,5 +5,5 @@
 }
 
 @mixin transition($delay: 0.5s) {
-  transition: opacity $delay ease-in;
+  transition: opacity $delay ease-in-out;
 }

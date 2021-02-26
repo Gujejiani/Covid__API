@@ -5,7 +5,8 @@ class HeaderView {
   #recovered = document.querySelector(".total__info__cases--recovered");
 
   renderHeaderData(data) {
-    if (!data[0]) return;
+    if (!data) return;
+    console.log("returned");
     const { confirmed, critical, deaths, recovered } = data[0];
     this.#confirmed.innerHTML = confirmed;
     this.#critical.innerHTML = critical;

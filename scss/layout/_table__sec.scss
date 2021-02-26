@@ -17,29 +17,49 @@
     background-color: #fff;
     border-radius: 5px;
     padding: 20px 0;
+    &__total {
+      width: 100px;
+    }
     &__titles {
       position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
       font-size: 22px;
-      padding: 0 10px;
-      @media (max-width: "768px") {
+      padding: 0 30px;
+      position: sticky;
+      top: 105px;
+      text-align: center;
+      background-color: #fff;
+      @media (max-width: 768px) {
+        top: 75px;
         font-size: 16px;
       }
+      @media (max-width: 500px) {
+        top: 65;
+      }
+
       .table__title {
-        position: sticky;
         padding: 10px 0;
-        top: 105px;
         background-color: #fff;
-        padding: 0 10px;
-        @media (max-width: 768px) {
-          top: 75px;
-        }
-        @media (max-width: 500px) {
-          top: 65;
-        }
+        padding: 10px 10px;
       }
     }
     &__items {
       font-size: 18px;
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      border-radius: 5px;
+      justify-content: space-between;
+      padding: 0 30px;
+      @media (max-width: 500px) {
+        padding: 0;
+      }
+      &:hover {
+        background-color: $base--color;
+        cursor: pointer;
+      }
       @media (max-width: "768px") {
         font-size: 15px;
       }
@@ -47,12 +67,9 @@
     &__countries {
       cursor: pointer;
       padding: 10px;
+      width: 130px;
       @media (max-width: 768px) {
         width: 100px;
-      }
-      &:hover {
-        border-radius: 5px;
-        background-color: $base--color;
       }
     }
     &__new {
@@ -61,6 +78,7 @@
       display: flex;
       justify-content: space-between;
       padding: 10px 0;
+      width: 100px;
       &__star {
         color: gray;
 
@@ -72,6 +90,7 @@
       justify-content: space-between;
       color: black;
       padding: 10px 0;
+      width: 100px;
     }
   }
 }

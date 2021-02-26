@@ -72,48 +72,51 @@
       <div class="search">
         <input
           type="search"
-          placeholder="search county..."
+          placeholder="search country..."
           class="search__input"
         />
-        <!-- <button type="submit"> -->
+
         <i class="fas fa-search search__icon fa-mg"></i>
-        <!-- </button> -->
       </div>
       <!-- Country Modal Start -->
       <div class="modal"></div>
       <!-- Country Modal END -->
-      <table class="container__table">
-        <tr class="container__table__titles">
-          <th class="table__title container__table__titles--country">
+
+      <div class="container__table">
+        <ul class="container__table__titles">
+          <li class="table__title container__table__titles--country">
             Country
-          </th>
-          <th class="table__title">Total Cases</th>
-          <th class="table__title">New Cases</th>
-          <th class="table__title fav fav--title">
-            Fav <i class="fas fa-caret-down"></i>
+          </li>
+          <li class="table__title">Total Cases</li>
+          <li class="table__title">New Cases</li>
+          <li class="table__title fav fav--title">
+            Fav
+            <i class="fas fa-caret-down"></i>
+          </li>
+        </ul>
+        <!-- DROPDOWN start -->
+        <div class="fav__container fav__dropdown--hide">
+          <div class="fav__table">
+            <ul class="fav__table__titles">
+              <li class="table__title fav__table__title">Country</li>
+              <li
+                class="table__title fav__table__title fav__table__message__parrent"
+              >
+                Total Cases
 
-            <!-- FAVOURITE DROPDOWN -->
+                <div class="fav__table__message">Favourites is Empty</div>
+              </li>
+              <li class="table__title fav__table__title">New Cases</li>
+            </ul>
+          </div>
+        </div>
+        <!-- DROPDOWN start End -->
+        <!-- error place -->
 
-            <div class="fav__container fav__dropdown--hide">
-              <table class="fav__table">
-                <tr class="fav__table__titles">
-                  <th class="table__title fav__table__title">Country</th>
-                  <th
-                    class="table__title fav__table__title fav__table__message__parrent"
-                  >
-                    Total Cases
-
-                    <div class="fav__table__message">Favourites is Empty</div>
-                  </th>
-                  <th class="table__title fav__table__title">New Cases</th>
-                </tr>
-              </table>
-            </div>
-            <!-- FAVOURITE DROPDOWN END -->
-          </th>
-        </tr>
-        <tr class="container__table__items"></tr>
-      </table>
+        <ul class="container__table__items">
+          <!-- Country Table goes here -->
+        </ul>
+      </div>
     </div>
 
     <script type="module" src="./src/controller.js"></script>

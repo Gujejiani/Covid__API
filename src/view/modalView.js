@@ -36,6 +36,7 @@ class ModalView extends View {
     const totalCases = this._dataCheck(data?.totalCases);
     const totalDeaths = this._dataCheck(data?.totalDeaths);
     const totalRecovered = this._dataCheck(data?.totalRecovered);
+    console.log(data);
 
     const markup = `
     <div class="modal__container">
@@ -44,28 +45,21 @@ class ModalView extends View {
     alt="country"
   />
   <ul class="modal__container__list">
-    <li
-      class="modal__container__list__li modal__container__list__li--country"
-    >
-      ${country}
-    </li>
-    <li
-      class="modal__container__list__li modal__container__list__li--population"
-    >
-      👫 population: ${population}
-    </li>
-    <li class="modal__container__list__li">
-      New Cases: 
-      <span class="modal__container__list__li${
-        newCases > 0 ? "--new" : ""
-      }"> ${newCases}</span>
-    </li>
+    <li  class="modal__container__list__li modal__container__list__li--country" >${country} </li>
+   <li class="modal__container__list__li modal__container__list__li--population" > 👫 population: ${population}</li>
+  <li class="modal__container__list__li"> New Cases:  <span class="modal__container__list__li${
+    newCases > 0 ? "--new" : ""
+  }"> ${newCases > 0 ? "+ " + newCases : newCases}</span></li>
     <li class="modal__container__list__li">New Deaths:  <span class="modal__container__list__li${
       newDeaths > 0 ? "--new" : ""
     }">  ${newDeaths} </span></li>
     <li class="modal__container__list__li">Total Cases:  ${totalCases}</li>
     <li class="modal__container__list__li">Total Deaths:  ${totalDeaths}</li>
-    <li class="modal__container__list__li">Total Recovered: ${totalRecovered}</li>
+    <li class="modal__container__list__li ">Total Recovered: <span class="${
+      parseInt(totalRecovered) > 0
+        ? "modal__container__list__li--recovered"
+        : ""
+    } "  >   ${totalRecovered}  </span> </li>
   </ul>
   </div>
       `;
