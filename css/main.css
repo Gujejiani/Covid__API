@@ -254,25 +254,25 @@ a {
       @media (max-width: 500px) {
         .header .header__items__container .total__info {
           font-size: 10px; } }
+      @media (max-width: 325px) {
+        .header .header__items__container .total__info {
+          font-size: 8px; } }
       .header .header__items__container .total__info div {
         text-align: center; }
-      .header .header__items__container .total__info__cases {
-        position: relative; }
-        .header .header__items__container .total__info__cases--deaths {
-          color: #904e55; }
-        .header .header__items__container .total__info__cases--recovered {
-          color: #098044; }
-        .header .header__items__container .total__info__cases--critical {
-          color: #ce041f; }
-        .header .header__items__container .total__info__cases--confirmed {
-          color: #00a5cf; }
-        .header .header__items__container .total__info__cases span {
-          display: block; }
+      .header .header__items__container .total__info__cases--deaths {
+        color: #904e55; }
+      .header .header__items__container .total__info__cases--recovered {
+        color: #098044; }
+      .header .header__items__container .total__info__cases--critical {
+        color: #ce041f; }
+      .header .header__items__container .total__info__cases--confirmed {
+        color: #00a5cf; }
+      .header .header__items__container .total__info__cases span {
+        display: block; }
 
 .fav {
   position: relative; }
   .fav--title {
-    position: relative;
     cursor: pointer; }
   .fav__container {
     position: absolute;
@@ -308,7 +308,6 @@ a {
     color: #f2efe9;
     text-align: left; }
     .fav__table__titles {
-      position: relative;
       display: flex;
       width: 100%;
       justify-content: space-between;
@@ -319,9 +318,6 @@ a {
       @media (max-width: 350px) {
         .fav__table__titles {
           font-size: 15px; } }
-    .fav__table__title {
-      position: relative;
-      background-color: #2a272b !important; }
     .fav__table .container__fav__items {
       font-size: 16px;
       display: flex;
@@ -348,9 +344,6 @@ a {
       .fav__table__new--null {
         color: #fff !important;
         margin-left: 20px; }
-      .fav__table__new--favourite {
-        position: relative;
-        left: 30px; }
 
 .dropdown {
   position: sticky;
@@ -405,7 +398,8 @@ a {
           font-size: 16px; } }
       @media (max-width: 500px) {
         .container__table__titles {
-          top: 65; } }
+          top: 65;
+          padding: 0; } }
       .container__table__titles .table__title {
         padding: 10px 0;
         background-color: #fff;

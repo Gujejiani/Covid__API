@@ -56,21 +56,22 @@ const controApplication = function (e) {
     // handle favourites save and remove
     const el = e.target;
     const country = el.dataset.id;
+
     model.addAndRemoveFromFavouritesArray(country);
     //change Star UI logicly
     tableView.favouritesIconClicked(el);
-
+    favouriteView.removeFavElements(); //removing items from fav countries for update
     //check if user deleted country from favourites
     if (
       el.closest("ul") &&
       el.closest("ul").classList.contains("container__fav__items")
     ) {
-      //if so update table ui
-      tableView.removeFavElements(true);
-      renderTable();
+      const favCountryOnTable = document.querySelector(
+        `.${country.split(" ")[0]}` //getting current star by country name
+      );
+      tableView.favouritesIconClicked(favCountryOnTable); // and updaiting main table UI
     }
 
-    favouriteView.removeFavElements(); //removing items from fav countries for update
     //sort favourites by alphhabet
     model.state.favourites = sortCovidDataByCountries(model.state.favourites);
     if (model.state.favourites.length > 0) {
@@ -134,7 +135,7 @@ const searchControler = function (e) {
     el.country.toUpperCase().includes(searching.toUpperCase())
   );
 
-  tableView.removeFavElements(true); //
+  tableView.removeFavElements(true); // with true argument we are removing items from the main table
 
   searched.map((country) => {
     tableView.render(country);

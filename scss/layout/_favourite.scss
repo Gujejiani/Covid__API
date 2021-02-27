@@ -1,7 +1,6 @@
 .fav {
   position: relative;
   &--title {
-    position: relative;
     cursor: pointer;
   }
   &__container {
@@ -44,7 +43,6 @@
     text-align: left;
 
     &__titles {
-      position: relative;
       display: flex;
       width: 100%;
       justify-content: space-between;
@@ -57,10 +55,6 @@
       }
     }
 
-    &__title {
-      position: relative;
-      background-color: $primary--color !important;
-    }
     .container__fav__items {
       font-size: 16px;
       @include country--li;
@@ -86,10 +80,6 @@
       &--null {
         color: #fff !important;
         margin-left: 20px;
-      }
-      &--favourite {
-        position: relative;
-        left: 30px;
       }
     }
   }

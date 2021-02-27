@@ -26,14 +26,15 @@
       @media (max-width: 500px) {
         font-size: 10px;
       }
+      @media (max-width: 325px) {
+        font-size: 8px;
+      }
 
       div {
         text-align: center;
       }
 
       &__cases {
-        position: relative;
-
         &--deaths {
           color: $darkRed--color;
         }
