@@ -20,9 +20,7 @@ export default class View {
 
   generateMarkup(data, fav = false) {
     if (data.country === "All") return "";
-    const markup = `<ul  data-country="${
-      data.country.split(" ")[0]
-    }" class=" country__info ${
+    const markup = `<ul  data-country="${data.country}" class=" country__info ${
       fav ? "container__fav__items" : "container__table__items"
     }">
     <li  class="container__table__countries" >${data?.country}</li>
@@ -38,9 +36,9 @@ export default class View {
 
       class="container__table__new__star container__table__new--favourite  " 
       
-      ><i  data-id="${data.country}" class="${data.country} fas fa-star fa-lg ${
-      data.fav ? "favourite" : ""
-    }"></i>
+      ><i  data-id="${data.country}" class=" ${
+      data.country.split(" ")[0]
+    } fas fa-star fa-lg ${data.fav ? "favourite" : ""}"></i>
     </span></li>
 </ul>`;
 
