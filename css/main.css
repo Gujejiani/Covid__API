@@ -447,7 +447,7 @@ a {
 
 .modal {
   position: fixed;
-  min-width: 250px;
+  min-width: 200px;
   max-width: 300px;
   left: 0;
   top: 200px;
@@ -459,7 +459,7 @@ a {
   z-index: 140;
   visibility: hidden;
   opacity: 0;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   transition: opacity 0.5s ease-in-out; }
   @media (max-width: 768px) {
     .modal {
@@ -469,38 +469,44 @@ a {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
     background-color: black;
     height: 100%;
     z-index: 100;
     visibility: hidden;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s ease-in-out; }
-  .modal__container {
-    width: 100%; }
-    .modal__container__img {
-      width: 100%;
-      border-radius: 10px 10px 0 0; }
-    .modal__container__list {
-      display: flex;
-      flex-direction: column;
-      padding: 0 40px; }
-      .modal__container__list__li {
-        font-size: 18px;
-        margin: 5px 0; }
-        .modal__container__list__li--recovered {
-          color: #1c801c; }
-        @media (max-width: 768px) {
-          .modal__container__list__li {
-            font-size: 16px; } }
-        .modal__container__list__li--new {
-          color: red; }
-        .modal__container__list__li--country {
-          color: black;
-          font-weight: bold;
-          align-self: center;
-          font-size: 20px;
-          margin-top: 20px; }
+  .modal__container__img {
+    width: 100%;
+    border-radius: 10px 10px 0 0; }
+  .modal__container__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px; }
+    @media (max-width: 500px) {
+      .modal__container__list {
+        padding: 0 5px; } }
+    .modal__container__list__li {
+      font-size: 18px;
+      margin: 5px 0; }
+      .modal__container__list__li--recovered {
+        color: #1c801c; }
+      @media (max-width: 768px) {
+        .modal__container__list__li {
+          font-size: 16px; } }
+      @media (max-width: 500px) {
+        .modal__container__list__li {
+          margin: 2px 0; } }
+      .modal__container__list__li--new {
+        color: red; }
+      .modal__container__list__li--country {
+        color: black;
+        font-weight: bold;
+        align-self: center;
+        font-size: 20px;
+        margin-top: 20px; }
+        @media (max-width: 500px) {
+          .modal__container__list__li--country {
+            margin-top: 10px; } }
 
 .show {
   visibility: visible;
