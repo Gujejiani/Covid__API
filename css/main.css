@@ -3,12 +3,11 @@
   margin: 0;
   padding: 0; }
 
-html {
-  height: 100%; }
-
+html,
 body {
   height: 100%;
-  background-color: #f2efe9; }
+  background-color: #f2efe9;
+  height: 3400px; }
 
 ul {
   list-style: none; }
@@ -44,8 +43,6 @@ a {
 
 .loader {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   width: 100%;
   justify-content: center;

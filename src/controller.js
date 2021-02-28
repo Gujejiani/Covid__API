@@ -16,28 +16,30 @@ const loadCovidData = async function () {
 
     //2)await to covid data
     await model.getCovidData();
+    if (model.state.covidStatistic) {
+      //checking if data received successfully to avoid errors if some problem occurred while fetching
+      // 3) render header data fields
+      HeaderView.renderHeaderData(model.state.covidTotal);
 
-    // 3) render header data fields
-    HeaderView.renderHeaderData(model.state.covidTotal);
+      // 4) sorting countries by countries alphabet
+      sortCovidDataByCountries(model.state.covidStatistic);
 
-    // 4) sorting countries by countries alphabet
-    sortCovidDataByCountries(model.state.covidStatistic);
+      // 5) storing favourites data from local storage to our state
+      model.storeDataFromLocalStorageToFavourites(favourites);
 
-    // 5) storing favourites data from local storage to our state
-    model.storeDataFromLocalStorageToFavourites(favourites);
+      //6) render countries in the table
+      renderTable();
 
-    //6) render countries in the table
-    renderTable();
-
-    //update favourites UI if there are counties
-    if (model.state.favourites.length > 0) {
-      favouriteView.clearFavEmptyMessage();
-      model.state.favourites.map((country) => {
-        favouriteView.render(country);
-      });
+      //update favourites UI if there are counties
+      if (model.state.favourites.length > 0) {
+        favouriteView.clearFavEmptyMessage();
+        model.state.favourites.map((country) => {
+          favouriteView.render(country);
+        });
+      }
     }
   } catch (err) {
-    tableView.renderErrorMessage();
+    tableView.renderErrorMessage(err);
   }
 };
 loadCovidData();
@@ -103,15 +105,10 @@ const showCountyModal = async function (e) {
       model.state.countryDetail = countryCovidInfo; // storing it in seperate object in our state
 
       const countryInfo = await getCountryInfo(country); // awaiting to deatil info  we need flag and population
-      const flag = countryInfo[0]?.flag ?? "";
-      let population = countryInfo[0]?.population ?? "0";
-      population = `${(population / 1000000).toFixed(1)} m`;
-      model.state.countryDetail.flag = flag;
-      model.state.countryDetail.population = population;
-      //flag and population added two our more detail object
+      model.addFlagAndPopulationTostate(countryInfo);
       // 1) clear county modal
       countryModalView.clearModalCounrty();
-      // 2) show county modal
+      // 2) put data to country modal
       countryModalView.render(model.state.countryDetail);
       // 3) showing modal
       countryModalView.toggleModal();

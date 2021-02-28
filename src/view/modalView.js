@@ -6,6 +6,7 @@ class ModalView extends View {
   _overlay = document.querySelector(".modal__overlay");
   _container = document.querySelector(".container");
   _toggleElement = document.querySelector(".modal");
+
   constructor() {
     super();
   }
@@ -31,7 +32,7 @@ class ModalView extends View {
     const flag = data?.flag;
     const country = data?.country;
     const population = this._dataCheck(data?.population);
-    const newCases = parseInt(this._dataCheck(data?.newCases));
+    const newCases = parseFloat(this._dataCheck(data?.newCases));
     const newDeaths = parseInt(this._dataCheck(data?.newDeaths));
     const totalCases = this._dataCheck(data?.totalCases);
     const totalDeaths = this._dataCheck(data?.totalDeaths);
