@@ -130,7 +130,8 @@ a {
   @media (max-width: 768px) {
     .header__loader {
       width: 2em;
-      height: 2em; } }
+      height: 2em;
+      margin: 40px auto; } }
 
 .header__loader:before {
   width: 50%;
@@ -259,16 +260,18 @@ a {
           font-size: 8px; } }
       .header .header__items__container .total__info div {
         text-align: center; }
-      .header .header__items__container .total__info__cases--deaths {
-        color: #904e55; }
-      .header .header__items__container .total__info__cases--recovered {
-        color: #098044; }
-      .header .header__items__container .total__info__cases--critical {
-        color: #ce041f; }
-      .header .header__items__container .total__info__cases--confirmed {
-        color: #00a5cf; }
-      .header .header__items__container .total__info__cases span {
-        display: block; }
+      .header .header__items__container .total__info__cases {
+        position: relative; }
+        .header .header__items__container .total__info__cases--deaths {
+          color: #904e55; }
+        .header .header__items__container .total__info__cases--recovered {
+          color: #098044; }
+        .header .header__items__container .total__info__cases--critical {
+          color: #ce041f; }
+        .header .header__items__container .total__info__cases--confirmed {
+          color: #00a5cf; }
+        .header .header__items__container .total__info__cases span {
+          display: block; }
 
 .fav {
   position: relative; }

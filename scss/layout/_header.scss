@@ -35,6 +35,7 @@
       }
 
       &__cases {
+        position: relative;
         &--deaths {
           color: $darkRed--color;
         }
