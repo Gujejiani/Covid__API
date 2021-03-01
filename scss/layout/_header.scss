@@ -4,7 +4,7 @@
   background-color: $primary--color;
   width: 100%;
   z-index: 100;
-  .header__items__container {
+  &__items__container {
     display: flex;
     justify-content: space-between;
     padding: 0 50px;
@@ -13,7 +13,7 @@
     @media (max-width: 500px) {
       padding: 0 5px;
     }
-    .total__info {
+    .total-info {
       display: flex;
       font-size: 20px;
       width: 100%;
@@ -29,26 +29,22 @@
       @media (max-width: 325px) {
         font-size: 8px;
       }
-
-      div {
-        text-align: center;
-      }
-
       &__cases {
+        text-align: center;
         position: relative;
-        &--deaths {
-          color: $darkRed--color;
-        }
-        &--recovered {
-          color: $darkGreen--color;
-        }
-        &--critical {
-          color: $lightRed--color;
-        }
-        &--confirmed {
-          color: $secondary--color;
-        }
-        span {
+        &__quantity {
+          &--deaths {
+            color: $darkRed--color;
+          }
+          &--recovered {
+            color: $darkGreen--color;
+          }
+          &--critical {
+            color: $lightRed--color;
+          }
+          &--confirmed {
+            color: $secondary--color;
+          }
           display: block;
         }
       }

@@ -1,5 +1,5 @@
 import { covidStatistic, covidTotal, key } from "./config.js";
-import { CovidDataGetJSON } from "./helper.js/helper.js";
+import { GetJSON } from "./helper.js/helper.js";
 
 export const state = {
   favourites: [],
@@ -10,8 +10,8 @@ export const getCovidData = async function () {
   try {
     // using Promise All to improve the time of performance and to send two API request simultaneously
     await Promise.all([
-      CovidDataGetJSON(covidStatistic.url, covidStatistic.host, key),
-      CovidDataGetJSON(covidTotal.url, covidTotal.host, key),
+      GetJSON(covidStatistic.url, covidStatistic.host, key),
+      GetJSON(covidTotal.url, covidTotal.host, key),
     ]).then((resultArr) => {
       if (!resultArr) return new Error("error accured");
       state.covidStatistic = resultArr[0].result;

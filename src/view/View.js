@@ -23,23 +23,21 @@ export default class View {
     const markup = `<ul  data-country="${data.country}" class=" country__info ${
       fav ? "container__fav__items" : "container__table__items"
     }">
-    <li  class="container__table__countries" >${data?.country}</li>
-    <li class="container__table__total">${data?.totalCases}</li>
+    <li  class="container__table__items__countries" >${data?.country}</li>
+    <li class="container__table__items__total">${data?.totalCases}</li>
     <li class="${
       parseInt(data?.newCases) > 0
-        ? "container__table__new"
-        : "container__table__new--null"
-    } ${fav ? "fav__table__new--null" : null}"> ${
-      data?.newCases ? data?.newCases : 0
-    }</li>
-    <li  ><span
-
-      class="container__table__new__star container__table__new--favourite  " 
-      
-      ><i  data-id="${data.country}" class=" ${
+        ? "container__table__items__new"
+        : "container__table__items__new--null"
+    } ${
+      fav && !data?.newCases ? "fav-dropdown__container__table__new--null" : ""
+    }"> ${data?.newCases ? data?.newCases : 0}</li>
+    <li  ><i  data-id="${data.country}" class=" ${
       data.country.split(" ")[0]
-    } fas fa-star fa-lg ${data.fav ? "favourite" : ""}"></i>
-    </span></li>
+    } fas fa-star container__table__items__star fa-lg ${
+      data.fav ? "container__table__items--favourite" : " "
+    }"></i>
+    </li>
 </ul>`;
 
     return markup;

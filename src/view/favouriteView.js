@@ -1,13 +1,15 @@
 import View from "./View.js";
 
 class Favourite extends View {
-  _parentElement = document.querySelector(".fav__table");
+  _parentElement = document.querySelector(".fav-dropdown__container__table");
   _dropDown = document.querySelector(".fav");
 
   _favCountryItems = document.querySelectorAll(".container__fav__items");
-  _overlay = document.querySelector(".fav__overlay");
-  _toggleElement = document.querySelector(".fav__dropdown--hide");
-  _favMessageContainer = document.querySelector(".fav__table__titles");
+  _overlay = document.querySelector(".fav-dropdown__overlay");
+  _toggleElement = document.querySelector(".fav-dropdown__container--hide");
+  _favMessageContainer = document.querySelector(
+    ".fav-dropdown__container__table__titles"
+  );
   constructor() {
     super();
   }
@@ -21,11 +23,13 @@ class Favourite extends View {
   }
 
   addDefaultMessage() {
-    const markup = `<div class="fav__table__message">Favourites is Empty</div>`;
+    const markup = `<div class="fav-dropdown__container__table__titles__message">Favourites is Empty</div>`;
     this._favMessageContainer.insertAdjacentHTML("beforeend", markup);
   }
   clearFavEmptyMessage() {
-    const message = document.querySelector(".fav__table__message");
+    const message = document.querySelector(
+      ".fav-dropdown__container__table__titles__message"
+    );
     if (!message) return;
     message.remove();
   }

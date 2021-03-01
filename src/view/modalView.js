@@ -2,7 +2,7 @@ import View from "./View.js";
 
 class ModalView extends View {
   _parentElement = document.querySelector(".modal");
-  //   _modal = document.querySelector(".modal");
+
   _overlay = document.querySelector(".modal__overlay");
   _container = document.querySelector(".container");
   _toggleElement = document.querySelector(".modal");

@@ -1,8 +1,4 @@
-.fav {
-  position: relative;
-  &--title {
-    cursor: pointer;
-  }
+.fav-dropdown {
   &__container {
     position: absolute;
     z-index: 40;
@@ -13,12 +9,65 @@
 
     max-height: 400px;
     overflow: auto;
+    &--hide {
+      visibility: hidden;
+      opacity: 0;
+      @include transition;
+    }
+    &__table {
+      padding: 10px 0;
+      width: 100%;
+      font-size: 16px;
+      background-color: $primary--color;
+      border-radius: 5px;
+      padding-bottom: 10px;
+      color: $base--color;
+
+      &__titles {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 20px;
+        font-size: 17px;
+        padding-right: 60px;
+        flex-wrap: wrap;
+        @media (max-width: 350px) {
+          font-size: 15px;
+        }
+
+        &__message {
+          font-size: 15px;
+          color: $darkRed--color;
+          padding: 10px;
+          margin: auto;
+        }
+      }
+
+      .container__fav__items {
+        font-size: 16px;
+        @include country--li;
+        padding: 0 10px;
+        margin-top: 5px;
+
+        cursor: pointer;
+        &:hover {
+          background-color: #4b3e3e;
+        }
+
+        &__fav__countries {
+          width: 80px;
+          text-align: left;
+        }
+      }
+
+      &__new {
+        &--null {
+          color: #fff !important;
+        }
+      }
+    }
   }
-  &__dropdown--hide {
-    visibility: hidden;
-    opacity: 0;
-    @include transition;
-  }
+
   &__overlay {
     position: fixed;
     top: 0;
@@ -31,73 +80,4 @@
     visibility: hidden;
     @include transition;
   }
-
-  &__table {
-    padding: 10px 0;
-    width: 100%;
-    font-size: 16px;
-    background-color: $primary--color;
-    border-radius: 5px;
-    padding-bottom: 10px;
-    color: $base--color;
-    text-align: left;
-
-    &__titles {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      padding-right: 80px;
-      padding-left: 20px;
-      font-size: 17px;
-      flex-wrap: wrap;
-      @media (max-width: 350px) {
-        font-size: 15px;
-      }
-    }
-
-    .container__fav__items {
-      font-size: 16px;
-      @include country--li;
-      padding: 0 10px;
-      margin-top: 5px;
-      cursor: pointer;
-      &:hover {
-        background-color: #4b3e3e;
-      }
-      &__fav__countries {
-        width: 80px;
-        text-align: left;
-      }
-    }
-    &__message {
-      font-size: 15px;
-      color: $darkRed--color;
-      padding: 10px;
-      margin: auto;
-    }
-    &__new {
-      color: red;
-      &--null {
-        color: #fff !important;
-        margin-left: 20px;
-      }
-    }
-  }
-}
-.dropdown {
-  position: sticky;
-  top: 150px;
-  z-index: 30;
-}
-.favourite {
-  color: $secondary--color;
-}
-.fa-caret-down {
-  cursor: pointer;
-  color: $secondary--color;
-}
-
-.fav__dropdown--show {
-  visibility: visible;
-  opacity: 1;
 }

@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <div class="fav__overlay"></div>
     <header class="header">
       <div class="header__items__container">
         <nav class="header__nav">
@@ -38,34 +37,49 @@
             /></a>
           </div>
         </nav>
-        <div class="total__info">
-          <div class="total__info__cases">
+        <div class="total-info">
+          <div class="total-info__cases">
             CONFIRMED
-            <span class="total__info__cases--confirmed"
-              ><div class="header__loader"></div
+            <span
+              class="total-info__cases__quantity total-info__cases__quantity--confirmed"
             ></span>
+            <div
+              class="total-info__cases__loader total-info__cases__loader--show"
+            ></div>
           </div>
-          <div class="total__info__cases">
+          <div class="total-info__cases">
             CRITICAL
-            <span class="total__info__cases--critical"
-              ><div class="header__loader"></div
+            <span
+              class="total-info__cases__quantity total-info__cases__quantity--critical"
             ></span>
+            <div
+              class="total-info__cases__loader total-info__cases__loader--show"
+            ></div>
           </div>
-          <div class="total__info__cases">
+          <div class="total-info__cases">
             DEATHS
-            <span class="total__info__cases--deaths"
-              ><div class="header__loader"></div
-            ></span>
+            <span
+              class="total-info__cases__quantity total-info__cases__quantity--deaths"
+            >
+            </span>
+            <div
+              class="total-info__cases__loader total-info__cases__loader--show"
+            ></div>
           </div>
-          <div class="total__info__cases">
+          <div class="total-info__cases">
             RECOVERED
-            <span class="total__info__cases--recovered">
-              <div class="header__loader"></div
-            ></span>
+            <span
+              class="total-info__cases__quantity total-info__cases__quantity--recovered"
+              >.
+            </span>
+            <div
+              class="total-info__cases__loader total-info__cases__loader--show"
+            ></div>
           </div>
         </div>
       </div>
     </header>
+    <div class="fav-dropdown__overlay"></div>
     <div class="modal__overlay"></div>
     <div class="container">
       <div class="search">
@@ -75,7 +89,7 @@
           class="search__input"
         />
 
-        <i class="fas fa-search search__icon fa-mg"></i>
+        <i class="fas fa-search fa-mg search__icon"></i>
       </div>
       <!-- Country Modal Start -->
       <div class="modal"></div>
@@ -83,31 +97,37 @@
 
       <div class="container__table">
         <ul class="container__table__titles">
-          <li class="table__title container__table__titles--country">
-            Country
-          </li>
-          <li class="table__title">Total Cases</li>
-          <li class="table__title">New Cases</li>
-          <li class="table__title fav fav--title">
+          <li class="container__table__titles__title">Country</li>
+          <li class="container__table__titles__title">Total Cases</li>
+          <li class="container__table__title">New Cases</li>
+          <li class="container__table__title fav fav--title">
             Fav
             <i class="fas fa-caret-down"></i>
           </li>
         </ul>
         <!-- DROPDOWN start -->
-        <div class="dropdown">
-          <div class="fav__container fav__dropdown--hide">
-            <div class="fav__table">
-              <ul class="fav__table__titles">
-                <li class="table__title fav__table__title">Country</li>
-                <li class="table__title fav__table__title">Total Cases</li>
-                <li class="table__title fav__table__title">New Cases</li>
-                <div class="fav__table__message">Favourites is Empty</div>
+        <div class="fav-dropdown">
+          <div class="fav-dropdown__container fav-dropdown__container--hide">
+            <div class="fav-dropdown__container__table">
+              <ul class="fav-dropdown__container__table__titles">
+                <li class="fav-dropdown__container__table__titles__title">
+                  Country
+                </li>
+                <li class="fav-dropdown__container__table__titles__title">
+                  Total Cases
+                </li>
+                <li class="fav-dropdown__container__table__titles__title">
+                  New Cases
+                </li>
+                <div class="fav-dropdown__container__table__titles__message">
+                  Favourites is Empty
+                </div>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- DROPDOWN start End -->
+        <!-- DROPDOWN  End -->
         <!-- error place -->
 
         <ul class="container__table__items">

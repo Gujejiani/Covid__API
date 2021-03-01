@@ -6,6 +6,7 @@ import tableView from "./view/tableView.js";
 import favouriteView from "./view/favouriteView.js";
 import countryModalView from "./view/modalView.js";
 import searchView from "./view/searchView.js";
+import { GetJSON } from "./helper.js/helper.js";
 
 const loadCovidData = async function () {
   try {
@@ -18,7 +19,9 @@ const loadCovidData = async function () {
     await model.getCovidData();
     if (model.state.covidStatistic) {
       //checking if data received successfully to avoid errors if some problem occurred while fetching
-      // 3) render header data fields
+
+      // 3)remove spinners and render header data fields
+      HeaderView.removeHeaderSpinners();
       HeaderView.renderHeaderData(model.state.covidTotal);
 
       // 4) sorting countries by countries alphabet
@@ -104,7 +107,10 @@ const showCountyModal = async function (e) {
       const countryCovidInfo = getCountryCovidInfo(country); // getting country covid info
       model.state.countryDetail = countryCovidInfo; // storing it in seperate object in our state
 
-      const countryInfo = await getCountryInfo(country); // awaiting to deatil info  we need flag and population
+      const countryInfo = await GetJSON(
+        "https://restcountries.eu/rest/v2/name/",
+        country
+      ); // awaiting to deatil info  we need flag and population
       model.addFlagAndPopulationTostate(countryInfo);
       // 1) clear county modal
       countryModalView.clearModalCounrty();
@@ -135,7 +141,7 @@ const searchControler = function (e) {
   tableView.removeFavElements(true); // with true argument we are removing items from the main table
 
   searched.map((country) => {
-    tableView.render(country);
+    tableView.render(country); //rendering searched results
   });
 };
 
@@ -174,19 +180,4 @@ const renderTable = function () {
   model.state.covidStatistic.map((country) => {
     tableView.render(country);
   });
-};
-
-const getCountryInfo = async function (country) {
-  try {
-    const countryInfo = await fetch(
-      `https://restcountries.eu/rest/v2/name/${country}`
-    )
-      .then((data) => {
-        return data.json();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return countryInfo;
-  } catch (err) {}
 };

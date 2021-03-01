@@ -1,0 +1,18 @@
+.fav-dropdown {
+  position: sticky;
+  top: 150px;
+  z-index: 30;
+}
+
+.fa-caret-down {
+  cursor: pointer;
+  color: $secondary--color;
+}
+
+.fav__dropdown--show {
+  visibility: visible;
+  opacity: 1;
+}
+.fav {
+  cursor: pointer;
+}

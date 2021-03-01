@@ -3,7 +3,6 @@ import View from "./View.js";
 class SearchView extends View {
   _searchInput = document.querySelector(".search__input");
   _searchIcon = document.querySelector(".search__icon");
-  _search;
   constructor() {
     super();
   }

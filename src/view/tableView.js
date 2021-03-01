@@ -9,7 +9,7 @@ class TableView extends View {
   }
 
   favouritesIconClicked(el) {
-    el.classList.toggle("favourite");
+    el.classList.toggle("container__table__items--favourite");
   }
   addHandlertomainContainerTable(handler) {
     this._parentElement.addEventListener("click", handler);

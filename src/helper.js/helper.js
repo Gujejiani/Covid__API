@@ -8,15 +8,17 @@ const responseTimeout = function (sec) {
   });
 };
 
-export const CovidDataGetJSON = async function (url, host, key) {
+export const GetJSON = async function (url, host, key) {
   try {
-    const realData = fetch(`${url}`, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": `${key}`,
-        "x-rapidapi-host": `${host}`,
-      },
-    });
+    const realData = key
+      ? fetch(url, {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key": `${key}`,
+            "x-rapidapi-host": `${host}`,
+          },
+        })
+      : fetch(`${url}${host}`);
 
     const res = await Promise.race([
       realData,
