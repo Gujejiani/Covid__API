@@ -106,12 +106,12 @@ const showCountyModal = async function (e) {
       const country = el.closest("ul").dataset.country;
       const countryCovidInfo = getCountryCovidInfo(country); // getting country covid info
       model.state.countryDetail = countryCovidInfo; // storing it in seperate object in our state
-
+      console.log(country);
       const countryInfo = await GetJSON(
         "https://restcountries.eu/rest/v2/name/",
         country
       ); // awaiting to deatil info  we need flag and population
-      model.addFlagAndPopulationTostate(countryInfo);
+      if (countryInfo) model.addFlagAndPopulationTostate(countryInfo);
       // 1) clear county modal
       countryModalView.clearModalCounrty();
       // 2) put data to country modal

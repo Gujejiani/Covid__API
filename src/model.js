@@ -63,11 +63,10 @@ export const addFlagAndPopulationTostate = function (countryInfo) {
 };
 
 export const storeDataFromLocalStorageToFavourites = function (favourites) {
-  state.favourites = favourites;
-
   favourites.forEach((fav) => {
     state.covidStatistic.find((el) => {
       if (el.country === fav.country) {
+        state.favourites.push(el);
         el.fav = true;
       }
     });

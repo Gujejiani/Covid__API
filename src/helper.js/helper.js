@@ -18,7 +18,7 @@ export const GetJSON = async function (url, host, key) {
             "x-rapidapi-host": `${host}`,
           },
         })
-      : fetch(`${url}${host}`);
+      : fetch(`${url}${host}`); // host = countryName
 
     const res = await Promise.race([
       realData,
