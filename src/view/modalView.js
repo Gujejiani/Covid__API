@@ -5,6 +5,7 @@ class ModalView extends View {
   _overlay = document.querySelector(".modal__overlay");
   _container = document.querySelector(".container");
   _toggleElement = document.querySelector(".modal");
+  _tableContainerClear = document.querySelector(".modal__overlay");
 
   constructor() {
     super();
@@ -13,6 +14,10 @@ class ModalView extends View {
   hideModal() {
     this._toggleModal();
     this.clearModalCounrty();
+    this.toggleOverlay();
+  }
+  _toggleModal() {
+    this._toggleElement.classList.toggle("show");
   }
 
   clearModalCounrty() {
@@ -25,6 +30,10 @@ class ModalView extends View {
   }
   addModalToggleHandler(handler) {
     this._container.addEventListener("click", handler);
+  }
+
+  toggleOverlay() {
+    this._overlay.classList.toggle("overlay__show");
   }
 
   generateMarkup(data) {

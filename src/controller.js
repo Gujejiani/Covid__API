@@ -94,7 +94,7 @@ const countyApplication = function (e) {
 };
 
 //showing detail info of country with modal window
-const showCountyModal = async function (e) {
+const showCountryModal = async function (e) {
   try {
     const el = e.target;
     if (
@@ -102,22 +102,36 @@ const showCountyModal = async function (e) {
       el.closest("ul").classList.contains("country__info") &&
       e.target.nodeName !== "I"
     ) {
+      //show overlay
+      countryModalView.toggleOverlay();
+      countryModalView.renderSpinner();
       // clicked country Name
       const country = el.closest("ul").dataset.country;
       const countryCovidInfo = getCountryCovidInfo(country); // getting country covid info
       model.state.countryDetail = countryCovidInfo; // storing it in separate object in our state
-      console.log(country);
+
       const countryInfo = await GetJSON(
         "https://restcountries.eu/rest/v2/name/",
         country
       ); // awaiting to detail info  we need flag and population
+
+      if (!countryInfo) return;
       if (countryInfo) model.addFlagAndPopulationTostate(countryInfo);
       // 1) clear county modal
       countryModalView.clearModalCounrty();
       // 2) put data to country modal
       countryModalView.render(model.state.countryDetail);
       // 3) showing modal
-      countryModalView.toggleModal();
+      const modalImg = document.querySelector(".modal__container__img");
+      console.log(model.state.countryDetail);
+
+      if (model.state.countryDetail.flag) {
+        modalImg.addEventListener("load", function () {
+          countryModalView.toggleModal(); // shows only modal
+        });
+      } else {
+        countryModalView.toggleModal(); // shows only modal
+      }
     }
   } catch (err) {
     console.log(err);
@@ -152,7 +166,7 @@ const showSearch = function () {
 const init = function () {
   tableView.addHandlerToMainContainerTable(countyApplication);
   favouriteView.addHandlerToFavOverlay(favOverlayHandler);
-  countryModalView.addModalToggleHandler(showCountyModal);
+  countryModalView.addModalToggleHandler(showCountryModal);
   countryModalView.addModalOverlayHandler(modalOverlayHandler);
   searchView.addSearchHandler(searchController);
   searchView.addToggleSearchHandler(showSearch);

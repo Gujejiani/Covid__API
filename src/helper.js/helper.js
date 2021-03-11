@@ -31,6 +31,6 @@ export const GetJSON = async function (url, host, key) {
     return data;
   } catch (err) {
     console.log(err);
-    throw err;
+    return err;
   }
 };
