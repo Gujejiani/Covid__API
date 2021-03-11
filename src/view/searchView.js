@@ -12,7 +12,7 @@ class SearchView extends View {
     this._searchInput.focus();
   }
 
-  addTogleSearchHandler(handler) {
+  addToggleSearchHandler(handler) {
     this._searchIcon.addEventListener("click", handler);
   }
 

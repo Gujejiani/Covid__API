@@ -47,7 +47,7 @@ const loadCovidData = async function () {
 };
 loadCovidData();
 
-const controApplication = function (e) {
+const countyApplication = function (e) {
   const el = e.target;
 
   //check if dropdown was clicked
@@ -105,12 +105,12 @@ const showCountyModal = async function (e) {
       // clicked country Name
       const country = el.closest("ul").dataset.country;
       const countryCovidInfo = getCountryCovidInfo(country); // getting country covid info
-      model.state.countryDetail = countryCovidInfo; // storing it in seperate object in our state
+      model.state.countryDetail = countryCovidInfo; // storing it in separate object in our state
       console.log(country);
       const countryInfo = await GetJSON(
         "https://restcountries.eu/rest/v2/name/",
         country
-      ); // awaiting to deatil info  we need flag and population
+      ); // awaiting to detail info  we need flag and population
       if (countryInfo) model.addFlagAndPopulationTostate(countryInfo);
       // 1) clear county modal
       countryModalView.clearModalCounrty();
@@ -132,7 +132,7 @@ const favOverlayHandler = function () {
   favouriteView.toggleModal(); //hide favourites and overlay
 };
 
-const searchControler = function (e) {
+const searchController = function (e) {
   const searching = "" + e.target.value;
   const searched = model.state.covidStatistic.filter((el) =>
     el.country.toUpperCase().includes(searching.toUpperCase())
@@ -150,12 +150,12 @@ const showSearch = function () {
 };
 
 const init = function () {
-  tableView.addHandlertomainContainerTable(controApplication);
+  tableView.addHandlerToMainContainerTable(countyApplication);
   favouriteView.addHandlerToFavOverlay(favOverlayHandler);
   countryModalView.addModalToggleHandler(showCountyModal);
   countryModalView.addModalOverlayHandler(modalOverlayHandler);
-  searchView.addSearchHandler(searchControler);
-  searchView.addTogleSearchHandler(showSearch);
+  searchView.addSearchHandler(searchController);
+  searchView.addToggleSearchHandler(showSearch);
 };
 init();
 
