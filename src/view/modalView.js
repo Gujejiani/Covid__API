@@ -40,7 +40,7 @@ class ModalView extends View {
     const flag = data?.flag;
     const country = data?.country;
     const population = this._dataCheck(data?.population);
-    const newCases = parseFloat(this._dataCheck(data?.newCases));
+    const newCases = parseFloat(this._dataCheck(data?.newCases.replace('+', '').replace(',', '.')));
     const newDeaths = parseInt(this._dataCheck(data?.newDeaths));
     const totalCases = this._dataCheck(data?.totalCases);
     const totalDeaths = this._dataCheck(data?.totalDeaths);
@@ -74,6 +74,8 @@ class ModalView extends View {
     return markup;
   }
   _dataCheck(data) {
+    console.log(data.replace('+', ''))
+    console.log(parseInt(data))
     return data ? data : 0;
   }
 }

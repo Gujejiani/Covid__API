@@ -14,10 +14,10 @@ class HeaderView {
     if (!data) return;
 
     const { confirmed, critical, deaths, recovered } = data[0];
-    this._confirmed.innerHTML = confirmed;
-    this._critical.innerHTML = critical;
-    this._deaths.innerHTML = deaths;
-    this._recovered.innerHTML = recovered;
+    this._confirmed.innerHTML = (+confirmed / 1000000).toFixed(3) + ' m';
+    this._critical.innerHTML = (+critical / 1000000).toFixed(3) + ' m';
+    this._deaths.innerHTML = (+deaths / 1000000).toFixed(3) + ' m';
+    this._recovered.innerHTML = (+recovered / 1000000).toFixed(3) + ' m';
   }
   removeHeaderSpinners() {
     this._headerSpinners.forEach((spinner) => {

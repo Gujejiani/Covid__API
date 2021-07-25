@@ -13,7 +13,9 @@ class TableView extends View {
   }
   addHandlerToMainContainerTable(handler) {
     this._parentElement.addEventListener("click", handler);
+    
   }
+ 
 }
 
 export default new TableView();
